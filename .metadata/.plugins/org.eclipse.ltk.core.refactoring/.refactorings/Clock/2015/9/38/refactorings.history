@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Extracts string &apos;add alarm&apos; into R.string.add_alarm" description="Extracts string &apos;add alarm&apos; into R.string.add_alarm" file="/Clock/res/layout/activity_main.xml" flags="6" id="com.android.ide.eclipse.adt.refactoring.extract.string" mode="EDIT_SOURCE" proj="/Clock" rplc-all-java="false" rplc-all-xml="false" sel-end="2910" sel-start="2887" stamp="1442561796254" tok-esc="add alarm" xml-attr-name="android:text"/>
-</session>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Demo1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/_www/workspace/Android/AndroidLearning/Demo/Lesson14_HelloService.zip!/" />
-      <root url="jar://$PROJECT_DIR$/_www/workspace/Android/AndroidLearning/Demo/App_elfPlayer_.zip!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="scripts">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/_www/javaScript/AdvancEDDOMScripting/libraries/mochikit/scripts/js.jar!/" />
-      <root url="jar://$PROJECT_DIR$/_www/javaScript/AdvancEDDOMScripting/libraries/mochikit/scripts/custom_rhino.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>

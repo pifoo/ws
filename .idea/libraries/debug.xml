@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="debug">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/android/MyMusic/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-893fa2f7cbeea8fc953f957ad5dac9060dd37adf.jar!/" />
-      <root url="jar://$PROJECT_DIR$/android/MyMusic/app/build/intermediates/pre-dexed/debug/pinyin4j-2.5.0-1fc7bef6f46c1121435c0f0d3a9804d94919e85f.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>

@@ -1,8 +1,0 @@
-<component name="libraryTable">
-  <library name="gradle-wrapper1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/android/MyMusic/gradle/wrapper/gradle-wrapper.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>

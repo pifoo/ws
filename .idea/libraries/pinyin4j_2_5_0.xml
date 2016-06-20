@@ -1,8 +1,0 @@
-<component name="libraryTable">
-  <library name="pinyin4j-2.5.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/android/MyMusic/app/libs/pinyin4j-2.5.0.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>
