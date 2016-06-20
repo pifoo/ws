@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J7B-Kk-xHl">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIStackView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2oz-rm-lCq">
+                                <rect key="frame" x="60" y="229" width="200" height="110"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQX-j9-kdc">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="110"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfJ-Xo-MdW">
+                                        <rect key="frame" x="67" y="0.0" width="67" height="110"/>
+                                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tp-Ka-1M0">
+                                        <rect key="frame" x="134" y="0.0" width="67" height="110"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="tvw-LJ-lBn"/>
+                                    <constraint firstAttribute="height" constant="110" id="z4R-p5-dQb"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2oz-rm-lCq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fGJ-qx-dhn"/>
+                            <constraint firstItem="2oz-rm-lCq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="luD-1b-aRv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="162" y="406"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yGn-8X-GTs">
+            <objects>
+                <viewController id="J7B-Kk-xHl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jot-Cs-TSY"/>
+                        <viewControllerLayoutGuide type="bottom" id="3C4-HL-dDd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KDr-qK-fsz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fBb-Nd-W3T">
+                                <rect key="frame" x="60" y="229" width="209" height="110"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9m-EY-dSj">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="110"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90I-1a-2i4">
+                                        <rect key="frame" x="70" y="0.0" width="70" height="110"/>
+                                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4l-gv-1zD">
+                                        <rect key="frame" x="140" y="0.0" width="70" height="110"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="o2a-TF-ppc"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fBb-Nd-W3T" firstAttribute="centerY" secondItem="KDr-qK-fsz" secondAttribute="centerY" id="Etl-Dz-mgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fBb-Nd-W3T" secondAttribute="trailing" constant="39" id="eU4-RZ-3MX"/>
+                            <constraint firstItem="fBb-Nd-W3T" firstAttribute="leading" secondItem="KDr-qK-fsz" secondAttribute="leadingMargin" constant="40" id="oHh-ia-OGX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVj-mk-q1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="406"/>
+        </scene>
+    </scenes>
+</document>

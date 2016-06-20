@@ -1,0 +1,255 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD1CCA391C148716000D220C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1CCA381C148716000D220C /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FD1CCA331C148716000D220C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FD1CCA351C148716000D220C /* playSwift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = playSwift; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1CCA381C148716000D220C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FD52C9681C3D3F42009270CE /* playSwift_2-3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "playSwift_2-3.playground"; sourceTree = "<group>"; };
+		FDD0D29B1C1B16AD00279B9C /* main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = main.playground; sourceTree = "<group>"; };
+		FDD0D29C1C1B16AD00279B9C /* playSwift_1-0.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "playSwift_1-0.playground"; sourceTree = "<group>"; };
+		FDD0D29D1C1B16AD00279B9C /* playSwift_2-2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "playSwift_2-2.playground"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD1CCA321C148716000D220C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD1CCA2C1C148716000D220C = {
+			isa = PBXGroup;
+			children = (
+				FD1CCA371C148716000D220C /* playSwift */,
+				FD1CCA361C148716000D220C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD1CCA361C148716000D220C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD1CCA351C148716000D220C /* playSwift */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD1CCA371C148716000D220C /* playSwift */ = {
+			isa = PBXGroup;
+			children = (
+				FD1CCA381C148716000D220C /* main.swift */,
+				FDD0D29B1C1B16AD00279B9C /* main.playground */,
+				FDD0D29C1C1B16AD00279B9C /* playSwift_1-0.playground */,
+				FDD0D29D1C1B16AD00279B9C /* playSwift_2-2.playground */,
+				FD52C9681C3D3F42009270CE /* playSwift_2-3.playground */,
+			);
+			path = playSwift;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD1CCA341C148716000D220C /* playSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD1CCA3C1C148716000D220C /* Build configuration list for PBXNativeTarget "playSwift" */;
+			buildPhases = (
+				FD1CCA311C148716000D220C /* Sources */,
+				FD1CCA321C148716000D220C /* Frameworks */,
+				FD1CCA331C148716000D220C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = playSwift;
+			productName = playSwift;
+			productReference = FD1CCA351C148716000D220C /* playSwift */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD1CCA2D1C148716000D220C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "何万江";
+				TargetAttributes = {
+					FD1CCA341C148716000D220C = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = FD1CCA301C148716000D220C /* Build configuration list for PBXProject "playSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FD1CCA2C1C148716000D220C;
+			productRefGroup = FD1CCA361C148716000D220C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD1CCA341C148716000D220C /* playSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD1CCA311C148716000D220C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD1CCA391C148716000D220C /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FD1CCA3A1C148716000D220C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD1CCA3B1C148716000D220C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FD1CCA3D1C148716000D220C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FD1CCA3E1C148716000D220C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD1CCA301C148716000D220C /* Build configuration list for PBXProject "playSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD1CCA3A1C148716000D220C /* Debug */,
+				FD1CCA3B1C148716000D220C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD1CCA3C1C148716000D220C /* Build configuration list for PBXNativeTarget "playSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD1CCA3D1C148716000D220C /* Debug */,
+				FD1CCA3E1C148716000D220C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD1CCA2D1C148716000D220C /* Project object */;
+}
