@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>browser</title>
+		<script type="text/javascript" src="browser.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+           /*
+		    * 能力检测
+		    */
+		//	if(object.propertyInQuestion){
+				//使用object.propertyInQuestion
+		//	};
+			
+			/*
+		     * 怪癖检测
+			 */
+			 
+			 
+			/*
+		     * 用户代理检测
+			 */ 
+			 
+			 
+			 
+			//alert(client.engine.ver);
+			 
+			 
+			var browserName = navigator.userAgent.toLowerCase();
+			mybrowser = {
+				version: (browserName.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0, '0'])[1],
+				safari: /webkit/i.test(browserName) && !this.chrome,
+				opera: /opera/i.test(browserName),
+		        firefox:/firefox/i.test(browserName),
+				ie: /msie/i.test(browserName) && !/opera/.test(browserName),
+				mozilla: /mozilla/i.test(browserName) && !/(compatible|webkit)/.test(browserName) && !this.chrome,
+		        chrome: /chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName)
+			}	
+					 
+			//浏览器版本号函数
+			var br=navigator.userAgent.toLowerCase();
+			var browserVer=(br.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0, '0'])[1];
+			
+			//js浏览器判断函数 
+			function userBrowser(){
+			    var browserName=navigator.userAgent.toLowerCase();
+			    if(/msie/i.test(browserName) && !/opera/.test(browserName)){
+			        console.log("IE");
+			        return ;
+			    }else if(/firefox/i.test(browserName)){
+			        console.log("Firefox");
+			        return ;
+			    }else if(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName)){
+			        console.log("Chrome");
+			        return ;
+			    }else if(/opera/i.test(browserName)){
+			        console.log("Opera");
+			        return ;
+			    }else if(/webkit/i.test(browserName) &&!(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName))){
+			        console.log("Safari");
+			        return ;
+			    }else{
+			        console.log("unKnow");
+			    }
+			}
+			 
+			 /*
+			console.log(browserName) 
+			console.log(mybrowser.version) 
+			console.log(br) 
+			console.log(browserVer) */
+			userBrowser() + ": " + console.log(browserVer) ;
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+        //]]>
+        </script>
+	</body>
+</html>

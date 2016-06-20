@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>斐波那契数列</title>
+</head>
+
+<body>
+
+<input type="button" value="Button 1" id="btn1"  />
+<input type="button" value="Button 2" id="btn2"  />
+<input type="button" value="Button 3" id="btn3"  onClick="buttonClicked();"/>
+
+<script type="text/javascript">
+/*	JavaScript转义符
+	转义序列	字符
+	\b		退格
+	\f		走纸换页
+	\n		换行
+	\r		回车
+	\t		横向跳格 (Ctrl-I)
+	\'		单引号
+	\"		双引号
+	\\		反斜杠
+*/	
+	document.write("<h2>Table of Fibonacci Numbers</h2>");
+	for (i=0, j=1, k=0, fib =0; i<50; i++, fib=j+k, j=k, k=fib){
+		document.write("Fibonacci ("  + i +  ") = " + fib);
+		document.write("<br>");
+	};
+	
+	//删除字符左右两端的空格
+	String.prototype.trim=function(){
+　　    return this.replace(/(^\s*)|(\s*$)/g, "");
+　　}
+　	String.prototype.ltrim=function(){
+　　    return this.replace(/(^\s*)/g,"");
+　　}
+　　String.prototype.rtrim=function(){
+　　    return this.replace(/(\s*$)/g,"");
+　　}
+  
+	/* tab标签切换
+	var $tab = $(".tabTit1 span");
+	var $show = $(".innerBox > li");
+	var delay = null;
+	$tab.hover(
+		function(){
+			var index = $tab.index($(this));
+			if (delay)
+			clearTimeout(delay);
+			delay = setTimeout(function(){
+				$($show.get(index)).show().siblings().hide();		
+			}, 50)
+		},
+		function(){
+			if (delay) clearTimeout(delay);
+		}
+	);   */
+  </script>
+</body>
+</html>

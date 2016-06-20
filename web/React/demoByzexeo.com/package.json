@@ -1,0 +1,11 @@
+{
+    "name": "demoByZexeo.com",
+    "version": "1.0.0",
+    "description": "初识React: http://zexeo.com/course/56753a22b2b8de861c0d281a",
+    "main": "index.html",
+    "scripts": {
+        "dev": "browser-sync start --server --files \"*.*\""
+    },
+    "author": "pifoo",
+    "license": "MIT"
+}

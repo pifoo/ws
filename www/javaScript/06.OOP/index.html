@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>oop</title>
+		<script type="text/javascript" src="oop.js">	
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+			//静态方法：指不需要实例化对象就可以使用的方法
+			//实例方法：指必须要实例化对象才可以访问的方法
+			function staticClass(){};//声明一个类
+			staticClass.staticMethod = function(){alert("创建一个静态方法")};
+			staticClass.prototype.instanceMethod = function(){alert("创建一个实例方法")};
+			//对于静态方法可以直接调用:
+			//staticClass.staticMethod(); 
+			//但是实例方法（动态方法）不能直接调用:
+			//staticClass.instanceMethod(); //语句错误, 无法运行. 
+			//需要首先实例化后才能调用:
+			var instance = new staticClass();//首先实例化  
+			//instance.instanceMethod(); //在实例上可以调用实例方法  
+			
+			
+			
+			/**
+			 * 理解原型prototype---------------------------------------------//
+			 */
+			// 1. 理解原型prototype
+			//创建一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性（此属性为一个对象）
+			//在默认情况下，所有prototype属性都会自动获得一个constructor属性
+			//这个属性包含一个指向protorype属性所在函数的指针
+			function Fun(){};
+			//alert(Fun.prototype.constructor);  //function Fun(){};在函数中的constructor属性是一个指向protorype属性所在函数的指针
+			//alert(Fun.constructor);  //不是引用类，故：输出 function Function(){[native code]};
+			var fun = new Fun();
+			//每个引用类型都有一个constructor属性，指向创建当前对象的函数，即构造函数
+			//alert(fun.constructor); //function Fun(){};
+			//当通过构造函数创建一个新实例后，该实例内部将包含一个指针（ 即内部属性__proto__），指向构造函数的原型属性(prototype)
+			//alert(fun.__proto__);// object Object       在FireFox,Safari,Chrome,AS中，这个属性是可以访问的,而在其它实现中，这个属性对脚本则是完全不可见的
+			//这个连接存在于实例与构造函数的原型之间，而不在在于实例与构造函数之间
+			
+			
+			
+			// isPrototypeOf()  检测实例的内部属性__proto__是否指向原型的prototype对象
+			//测试一个实例对象的__proto__属性是否指向原型对象的prototype属性
+			//alert(Fun.prototype.isPrototypeOf(fun));//true  fun.__proto__(fun的内部)指向Fun.prototype,则返回true
+			
+			
+			
+			//可以通过对象实例访问保存在原型中的值，但却不能通过对象实例重写原型中的值
+			//实例中的的同名属性和方法会屏蔽原型中的那个属性和方法，但不能修改（如果同名，在实例中创建该属性和方法）
+			Fun.prototype.name = "Mr.he";
+			Fun.prototype.sayName = function(){alert(this.name)};
+			var fun1 = new Fun();
+			var fun2 = new Fun();
+			fun1.name = "Pifoo";
+			//alert(fun1.name);  // Pifoo--来自实例
+			//alert(fun2.name);  // Mr.he--来自原型
+			//使用delete操作可以完全删除实例属性，从而让我们重新访问原型中的属性
+			delete fun1.name;
+			//alert(fun1.name);  // Mr.he--来自原型
+			
+			// hasOwnProperty()  检测一个属性是存在于实例中，还是存在于原型中，这个方法从Object继承而来
+			// 只在给定属性存在于对象实例中，才会返回true
+			fun1.age = "26";
+			//alert(fun1.hasOwnProperty("age"));  // true
+			//alert(fun1.hasOwnProperty("name")); // false
+			//alert(Fun.hasOwnProperty("name"));  // true
+			
+			
+			//instanceof  检测对象类型:给定的变量是否为指定的构造函数的实例
+			//alert(fun1 instanceof Fun);	// true
+			
+			
+			
+			
+			// 2. 原型与in操作符
+			//有两种方式使用in操作符：单独使用和在for-in循环中使用
+			// in
+			//单独使用时，in操作符会在通过对象能够访问给定属性时返回true,无论该属性存在于实例中还是原型中
+			//alert("name" in Fun); // true 来自原型
+			//alert("name" in fun1); // true  来自实例
+			//alert("age" in Fun); // false //Fun无法访问age
+			//alert("age" in fun1); // true  来自实例 
+			
+			//同时使用hasOwnProerty()和in操作符，确定属性存在于实例中还是原型中
+			function hasPrototypeProperty(object,name){//返回true则存在于实例中，返回false则存在于原型中
+				return object.hasOwnProperty(name) && (name in object);
+			};
+			//alert(hasPrototypeProperty(fun1,"name"));//false  存在于原型中
+			//alert(hasPrototypeProperty(fun1,"age"));//true  存在于实例中
+			// for-in
+			//在使用for in循环时，返回的是所有能够通过对象来访问的，可枚举的属性。
+			//其中既包括存在于实例中的属性，也包括存在于原型中的属性
+			var o = {
+				toString:function(){
+					return "My Object"
+				}
+			};
+			for (var prop in o){
+				if(prop == "toString"){
+				//	alert("Found toStrings");	
+				}
+			};
+			for (var prop in window){
+				//alert(prop)
+			};
+			
+			// 3. 更为简单的原型语法，但constructor属性不再指向Person了
+			function Person(){};//每创建一个新函数，就会自动创建它的prototype对象，这个对象会自动获得constructor属性
+			//在默认情况下，所有prototype属性都会自动获得一个constructor属性
+			Person.prototype={//本质上这里重写了prototype对象，因此constructor属性也就变成新对象的constructor属性（指向Object的构造函数），不再指向Person函数。
+				//可以手工指定构造函数,从而确保了通过该属性能访问到适当的值
+				//constructor:Person,  !!!
+				name:"Mr.he"														
+			};
+			var person = new Person();
+			//alert(person instanceof Object);//true
+			//alert(person instanceof Person);//true
+			//alert(person.constructor ==  Person); //false  !!!
+			//alert(person.constructor ==  Object);//true    !!!
+			
+			
+			// 4. 原型的动态性
+			//由于在原型中查找值的过程是一次搜索，因此对原型对象所做的任何修改都能够立即从实例上反映出来
+			// --即使是先创建了实例后修改原型也照样如此
+			function Per(){};
+			var per = new Per(); //!!!A1
+			//per实例是在添加方法之前创建的，但任然可以访问这个新方法
+			//其原因可以归结为实例与原型之间的松散连接关系
+			//在调用per.sayHi()，会直接从实例中搜索名为sayHi()的属性，在没找到的情况下，会继续搜索原型
+			Per.prototype.sayHi = function(){
+				alert("Hi");
+			};
+			//per.sayHi() // Hi  
+			//但如果重写了整个原型对象
+			//--在已经创建了实例的情况下重写原型，那么就会切断所有实例与原型之间的联系
+			Per.prototype = {//把原型修改为另外一个对象就等于切断了构造函数与最初原型之间的联系，它们引用的仍然是最初的原型。实例中的指针仅指向原型，而不是指向构造函数
+				constructor:Per,
+				name:"He",
+				sayName:function(){alert(this.name)}
+			};//!!!A2
+			//per.sayName();  //Error     如果把A1放到A2处，则输出正常，这样没有破坏原型链
+			
+			// 5. 原生对象的原型
+			//可以修改原生对象的原型
+			//alert(typeof String.prototype.substring); //function
+			//给原生对象添加新方法
+			String.prototype.startsWith = function(text){
+				return this.indexOf(text) == 0;  //传入的文本位于一个字符串开始返回 true
+			};
+			var msg = "Hello world!";
+			//alert(msg.startsWith("Hello"));//true
+			//alert(msg.startsWith("llo"));  //false
+			
+			// 6. 原型模式的问题
+			//省略了为构造函数传递初始化参数
+			//对于引用类型值的修改，会影响到其它实例
+			function Person(){};
+			Person.prototype = {
+				construector:Person,	// 如果要使用construector，可以在此设置回适当的值
+				name:"Mr.he",
+				age:"26",
+				job:"F2E",
+				friends:["She","He"],
+				sayName:function(){
+					alert(this.name);
+				}
+			};
+			var person1 = new Person();
+			var person2 = new Person();
+			person1.friends.push("Van");
+			//alert(person1.friends); // She,He Van
+			//alert(person1.friends); // She,He Van
+			//alert(person1.friends === person2.friends); // true
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+        //]]>
+        </script>
+	</body>
+</html>

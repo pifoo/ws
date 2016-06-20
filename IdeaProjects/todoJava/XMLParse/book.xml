@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bookcase> 
+  <book> 
+    <title>Java就业培训教程</title>  
+    <author>张孝祥</author>  
+    <price>39.00元</price>  
+    <price2>40.00元</price2> 
+  </book>  
+  <book> 
+    <title>JavaScript网页开发</title>  
+    <author>张孝祥</author>  
+    <price>28.00元</price> 
+  </book> 
+</bookcase>

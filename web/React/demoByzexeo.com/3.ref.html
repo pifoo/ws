@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react ref</title>
+	<script type="text/javascript" src="./dist/react.js"></script>
+	<script type="text/javascript" src="./dist/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+    <script type="text/jsx">
+		var FormApp = React.createClass({
+
+			getInitialState: function() {
+				return {
+					inputValue: 'inputValue',
+					selectValue: 'B',
+					radioValue: 'C',
+					checkValues: [],
+					textareaValue: 'some text here ...'
+				}
+			},
+
+			handleSubmit: function(e) {
+				e.preventDefault();
+				console.log('from submitting ..');
+				//console.log(this.refs['goodInput'].getDOMNode().value); //获取ref='goodInput'指向的DOM节点
+				console.log(React.findDOMNode(this.refs['goodInput']).value);
+				var formData = {
+					intput: this.refs.goodInput.getDOMNode().value,
+					select: this.refs.goodSelect.getDOMNode().value,
+					radio: this.state.radioValue,
+					check: this.state.checkValues,
+					textarea: this.refs.goodTextarea.getDOMNode().value
+				}
+				console.log('the form result is: ');
+				console.log(formData);
+
+				this.refs.goodRadio.saySomething()
+			},
+
+			handleRaido: function(e){
+				this.setState({
+					radioValue: e.target.value
+				})
+			},
+			handleCheck: function(e){
+				var checkValues = this.state.checkValues.slice();// 创建一个新数组
+				var newVal = e.target.value;
+				var index = checkValues.indexOf(newVal);
+				if (index == -1) {
+					checkValues.push(newVal)
+				} else {
+					checkValues.splice(index, 1)
+				}
+				this.setState({
+					checkValues: checkValues
+				})
+			},
+
+			render: function(){
+				return (
+					<form onSubmit={this.handleSubmit}>
+						{/*ref指向inputValue，不用监听onChange, ref也可以定义成函数
+							 <input ref={ function(comp){
+								 React.findDOMNode(comp).focus()}
+							 } type='text' defaultValue={this.state.inputValue} />
+
+							 */}
+						<input ref='goodInput' type='text' defaultValue={this.state.inputValue} />
+						<br/>
+
+						<select ref='goodSelect'  defaultValue={this.state.selectValue} >
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
+						</select>
+						<br/>
+
+						<p>redio button</p> {/*选项太多，适配监听onChange*/}
+						<RadioButtons ref='goodRadio' handleRaido={this.handleRaido} />
+						<br/>
+
+						{/*选项太多，适配监听onChange*/}
+						<input onChange={this.handleCheck} name='goodCheckbox' type='checkbox' value='A' />
+						<input onChange={this.handleCheck} name='goodCheckbox' type='checkbox' value='B' />
+						<input onChange={this.handleCheck} name='goodCheckbox' type='checkbox' value='C' />
+						<br/>
+
+						<textarea ref='goodTextarea' cols="50" rows="10" defaultValue={this.state.textareaValue}></textarea>
+						<br/>
+
+						<button type='submit'>submit</button>
+					</form>
+				)
+			}
+
+		});
+
+		var RadioButtons = React.createClass({
+			saySomething: function(){
+				alert('yo what`s up man! ')
+			},
+			render: function(){
+				return (
+					<span>
+						A
+						<input onChange={this.props.handleRaido} name='goodRadio' type='radio' value='A' />
+						B
+						<input onChange={this.props.handleRaido} name='goodRadio' type='radio' value='B' defaultChecked />
+						C
+						<input onChange={this.props.handleRaido} name='goodRadio' type='radio' value='C' />
+					</span>
+				)
+			}
+		});
+
+		React.render(<FormApp/>, document.getElementById('app'));
+
+    </script>
+</body>
+</html>

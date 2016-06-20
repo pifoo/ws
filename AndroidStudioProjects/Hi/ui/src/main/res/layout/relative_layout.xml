@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/txtOne"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:textColor="#EA5246"
+        android:textStyle="bold|italic"
+        android:text="13112344321"
+        android:shadowColor="#ffab8f"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10.0"
+        android:drawableTop="@drawable/y_14"
+        android:drawablePadding="10dp"
+        android:autoLink="phone"
+        android:textSize="18sp" />
+
+    <!-- 这个是在容器中央的 -->
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/y_14" />
+
+    <!-- 在中间图片的左边 -->
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/img1"
+
+        android:src="@drawable/y_26" />
+
+    <!-- 在中间图片的右边 -->
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img1"
+
+        android:src="@drawable/y_36" />
+
+    <!-- 在中间图片的上面-->
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_above="@id/img1"
+        android:layout_centerHorizontal="true"
+
+        android:src="@drawable/y_37" />
+
+    <!-- 在中间图片的下面 -->
+    <ImageView
+        android:id="@+id/img5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_below="@id/img1"
+        android:layout_centerHorizontal="true"
+
+        android:src="@drawable/y_39" />
+
+</RelativeLayout><!--
+By: http://blog.csdn.net/coder_pig/article/details/46980815
+
+
+-->

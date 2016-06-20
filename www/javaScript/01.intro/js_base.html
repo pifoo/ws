@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //<![CDATA[
+            //NaN
+            document.writeln(NaN == NaN); //false   NaN与任何值都不相等；任何涉及NaN的操作，都会返回NaN;
+            document.writeln(isNaN(true)); //false   参数可以是任何类型，先尝试转换为数值，再判断
+            //数值范围
+            var resultMax = Number.MAX_VALUE;
+            var resultMin = Number.MIN_VALUE;
+            var MAX = Number.POSITIVE_INFINITY;
+            var MIN = Number.NEGATIVE_INFINITY;
+            document.writeln(resultMax * 2); //Infinity ,Infinity不能参与计算
+            document.writeln(resultMin);
+            document.writeln(isFinite(resultMax)); //判断数值是不是位于极小值与极大值之间
+            document.writeln(MAX); // Infinity
+            document.writeln(MIN); // -Infinity
+
+            /*数值转换 
+             * Number() 转型函数，可用于任何数据类型；下面两个专门于把字符串转换成数值，转换规则见书：P26
+             * parseInt()
+             * parseFloat()
+             *
+             */
+            //     console.log(mm);  // mm is not definde
+            var myvar = 'my value';
+            
+            (function(){
+                //    console.log(myvar); // undefined                   //在函数内部声明了变量，但初始化并没有置顶，故输出 undefind
+                var myvar = 'local value';
+            })();
+            //等同下面的代码
+            (function(){
+                var myvar; //  <== 内部置顶声明了变量
+                //    console.log(myvar); // undefined                   //在函数内部置顶声明了变量，但初始化并没有置顶，故输出 undefind
+                var myvar = 'local value';
+            })();
+
+            document.writeln(window.navigator.appCodeName + "</br>");
+            document.writeln(window.navigator.userAgent + "</br>");
+            
+			// 在ECMAScript中，状态和方法由对象持有，结构、行为和状态都可以被继承。
+			// 给所有对象添加方法
+            Object.prototype.hi = function(){
+                console.log('object.prototype.hi');
+            };
+            Object.prototype.greetings = function(){
+                console.log('object.prototype.greetings');
+            };
+            
+			// 给所有函数添加方法
+            Function.prototype.greetings = function(){
+                console.log('function.prototype.greetings');
+            };
+            
+            var CF = function(){};
+            CF.prototype.hello = function(){
+                console.log('CF.prototype.hello');
+            };
+            CF.prototype.bye = function(){
+                console.log('CF.prototype.bye');
+            };
+            
+            var o = new CF();
+            o.hello = function(){
+                console.log('o.hello');
+            };
+            
+            //o.hello();
+            //o.bye();
+            //o.hi();
+            //o.greetings();
+            
+            //CF.hi();
+            CF.greetings();
+			
+			var str = "www.baidu.com/?page";
+			// 1、字符串剪裁
+			var str1 = str.substring(0, str.indexOf("?page")-1);
+			console.log(str1);
+			// 2、正则表达式
+			var str2 = str.replace(/\/\?page/, "");
+			console.log(str2);
+			// 3、字符串分拆、合并
+			var str3 = str.split("/?").join("/");
+			console.log(str3);
+			
+			var a = new Array("日", "一", "二", "三", "四", "五", "六");
+			var week = new Date().getDay();
+			var str4 = "今天是星期"+ a[week];
+			console.log(str);
+			
+			var str5 = "今天是星期" + "日一二三四五六".charAt(new Date().getDay());
+		  	console.log(str5);
+			
+			var str6 = "http://www.xxx.com/?pn=0";   // 删除指定字符 pn=0
+			// 将这个字符串里所可能想到的各种情况都列举出来
+			var a = [
+			         "http://www.xxx.com/VMpn=?pn=0"// pn= 可能出现在 ? 前
+			        , "http://www.xxx.com/VMpn=?pn="// URL里允许pn 值为空
+			        , "http://www.xxx.com/VMpn=?pn=0&a=1"// URL 里可有多个字段
+			        , "http://www.xxx.com/VMpn=?a=1&pn=0"// 可能排在最后
+			        , "http://www.xxx.com/VMpn=?a=1&pn=0&pn=1"// 可能有多个 pn 字段
+			        , "http://www.xxx.com/VMpn=?a=1&pn=0&b=2"// 可能在中间
+			        , "http://www.xxx.com/VMpn=?a=1&pn=0&pn=1&b=1"  // 可能在中间成组
+			        , "http://www.xxx.com/VMpn=?a=1&pn=0&b=1&pn=1"  // 可能零星分布
+			];
+			/* 需求的不言之秘：
+			? 若出现在字符串最尾则要去之
+			? & 两个符号不可重叠
+			*/
+			var reg = /((\?)(pn=[^&]*&)+(?!pn=))|(((\?|&)pn=[^&]*)+$)|(&pn=[^&]*)/g;
+			
+			for (var i = 0; i < a.length; i++) {
+			    console.log(a[i] + "\n" + a[i].replace(reg, "$2"));
+			};			
+
+        //]]>
+        </script>
+    </body>
+</html>

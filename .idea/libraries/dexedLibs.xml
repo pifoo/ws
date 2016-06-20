@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/android/MyMusic/bin/dexedLibs/android-support-v4-555392ecc599edb83495d5cac7183731.jar!/" />
+      <root url="jar://$PROJECT_DIR$/android/MyMusic/bin/dexedLibs/pinyin4j-2.5.0-c25317d92c26577f8084277eaed913ec.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

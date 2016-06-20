@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>templates</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=1280;height=720; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;"/>
+  <style>
+  	body{margin: 0;padding: 0;}
+  	div{
+  		margin: 0;padding: 0;background:#EEE;
+  		width:1280px;
+  		height: 720px;
+  	}
+  	ul,li{
+  		list-style: none;
+  	}
+  	ul{
+  		margin:10px;
+  		padding: 100px;
+  		border: 1px solid #CCC;
+  		background: #FFF;
+  	}
+  	ul>li>a{
+  		display: inline-block;
+  		padding: 3px 5px;
+  	}
+  </style>
+  <script src="http://changhongmstar6i48.wasu.tv:88/a_resources/js/jquery-1.6.2.min.js"></script>
+
+</head>
+
+<body>
+<div>
+	<ul>
+		<li>
+			<a href="" tabindex="1" accesskey="">Demo</a>
+			<a href="" tabindex="1">Demo</a>
+			<a href="" tabindex="1">Click</a>
+			<a href="" tabindex="1">Demo</a>
+			<a href="" tabindex="1">Demo</a>
+		</li>
+	</ul>
+</div>
+<script>
+	$(function(){
+		$("a:first").focus();
+		//alert("focus……")
+	})
+</script>
+</body>
+</html>

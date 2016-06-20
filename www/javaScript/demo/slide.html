@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>滑动</title>
+		<style type="text/css">
+			#test {
+				width:400px;
+				height:200px;
+				position:relative;
+				overflow:hidden;
+				margin:100px auto
+			}
+			#test div {
+				width:190px;
+				height:200px;
+				position:absolute;
+			}
+			#d0 {
+				background:red;
+			}
+			#d1 {
+				background:#000;
+				left:100px;
+				color:#fff;
+			}
+			#d2 {
+				background:blue;
+				left:200px;
+			}
+			#d3 {
+				background:gray;
+				left:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test" onmouseout="TestEle(this,event,ResetDiv)">
+			<div id="d0" onmouseover="ChkDivMove(0)">
+				一
+			</div>
+			<div id="d1" onmouseover="ChkDivMove(1)">
+				二
+			</div>
+			<div id="d2" onmouseover="ChkDivMove(2)">
+				三
+			</div>
+			<div id="d3" onmouseover="ChkDivMove(3)">
+				四
+			</div>
+		</div>
+		<script type="text/javascript">
+			var $= function(id) {
+				return document.getElementById(id)
+			},
+			Timer=[null,null,null,null],
+		
+			ODiv=[0,100,200,300],
+		
+			ChkDivMove= function(N) {
+		
+				var i=Timer.length,L=ODiv.length;
+				while(i--) {clearTimeout(Timer[i]),Timer[i]=null;
+				}
+				i=N;
+				while(i>-1)
+					LeftScrollDiv(i,70*i--);
+				for(i=N+1;i<L;i++)
+					RightScrollDiv(i,(i-1)*70+190);
+			},
+			LeftScrollDiv= function(i,MinX) {
+		
+				var lx=ODiv[i];
+		
+				(function() {
+		
+					lx>MinX&&($('d'+i).style.left=--lx+'px',ODiv[i]=lx,Timer[i]=setTimeout(arguments.callee,1))
+		
+				})();
+			},
+			RightScrollDiv= function(i,MaxX) {
+		
+				var lx=ODiv[i];
+		
+				(function() {
+		
+					lx<MaxX&&($('d'+i).style.left=++lx+'px',ODiv[i]=lx,Timer[i]=setTimeout(arguments.callee,1))
+		
+				})();
+			},
+			ResetDiv= function() {
+		
+				var i,lx;
+				for(i=Timer.length;i--;) {clearTimeout(Timer[i]),Timer[i]=null;
+				}
+				i=ODiv.length;
+				while(--i)
+					ODiv[i]>(lx=i*100)?LeftScrollDiv(i,lx):RightScrollDiv(i,lx)
+			},
+			TestEle= function(obj, e,CallBack) {
+				e.currentTarget?(e.relatedTarget != obj&&obj != e.relatedTarget.parentNode&&CallBack()):(e.toElement != obj&&obj != e.toElement.parentNode&&    CallBack()  )
+			}
+		</script>
+	</body>
+</html>

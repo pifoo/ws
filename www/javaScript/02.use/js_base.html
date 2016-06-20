@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>js base</title>
+    </head>
+    <body>
+        <script type="text/javascript" >     
+        console.log(0.1 + 0.2); //这两个特定的的浮点数值的结果有误差
+        
+        console.log(typeof aa);
+        console.log(undefined == null);  //undefined派生自null    true
+        console.log(undefined === null);  //undefined派生自null   false
+        
+        
+        var a = "Hi";//声明一个变量  没有初始化
+        console.log(typeof a);  //声明一个变量,但没有对其赋值,但它仍然有值的,它的值为undefined
+        //		console.log(b);  //但注意,输出一个未定义的变量将出现错误,而不是输出undefined
+        //  undefined 没有初始化
+
+        console.log(1+2+"3"+4+5);    //=>3345
+        console.log(1+2+"3"+(4+5));  //=>339
+
+        var str = "some string";
+        console.log(!!str);//true,因为非运算符是针对布尔值进行运算的,所以将其它类型转换成布尔值只须将其连续非两次
+        str ="";
+        console.log(!!str);//输出false,只有空字符串转换成布尔值时会是false,非空字符串转换成布尔值都会返回true
+        var num =0;
+        console.log(!!num);//false
+        num=-123.345;
+        console.log(!!num);//true,除0以外的任何数字转换成布尔值都会是true
+        //还有一个非常重要的是,空字符串转换成数字将会是0
+        console.log(""*1);//输出0
+
+        var msg = window.prompt("请输入一个数字","默认值");//prompt方法包含一个必须参数和一个可选参数。
+        //第一个参数是必须的，将在窗口中显示的文字，第二个参数是可选的，为文本框的预设值
+        console.log(msg);//将输出我们输入进去的东西
+        
+        function test(){ 
+          mse = "Hi";
+        }
+        test(); //如果不运行test(),直接输出mse,将会产生错误，在这个过程中，mse并未声明或初始休，因为test()没有产调用，不产生行为；
+        console.log(mse); //如果mse被声明为局部(加var)变量，test()退出后，mse就被销毁
+        </script>
+    </body>
+</html>

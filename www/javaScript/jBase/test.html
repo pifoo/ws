@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test</title>
+		<script src="ADS.js"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+
+		//]]>
+		</script>
+	</head>
+	<body>
+		<a id="a" href="javascript:window.open()" >test1</a>
+		<a id="anchor1" href="#" >test2</a>
+		<a id="anchor2" href="#" >test3</a>
+		<a id="anchor3" href="javascript:void(0)" >test4</a>
+			
+		<h1 class="popup">ADS.getElementsByClassName</h1>
+		<p class="popup">ADS.getElementsByClassName</p>
+		<div id="list">
+			<h2 class="popup">dddd</h2>
+			<ol>
+				<li class="popup">ddee</li>
+				<li class="popup">wqre</li>
+			</ol>
+		</div>
+		
+		<script type="text/javascript">
+		//<![CDATA[
+			if(ADS.isCompatible()){
+				console.log("使用ADS库的代码");
+				//console.dir("使用ADS库的代码");
+				//console.warn("使用ADS库的代码");
+				//console.error("使用ADS库的代码");
+			}
+			var a = ADS.$('a');
+			console.log(a);
+			
+			var exp = ADS.$('a','b','c','d');
+			for(e in exp){
+				//console.log(exp[e]);
+			}
+			
+			ADS.addEvent(window,'load',function(W3CEvent){
+				//查找文档中所有带popup类的锚标签
+				var popups = ADS.getElementByClassName('popup','a');
+				for(var i=0;i<popups.length;i++){
+					//给每个锚添加一个单击事件侦听器
+					ADS.addEvent(popups[i],'click',function(W3CEvent){
+						//使用href属性打开窗口
+						window.open(this.href);
+						//取消默认事件
+						ADS.eventPreventDefault(W3CEvent);
+					})
+				}
+			})
+			
+			//var found = ADS.getElementsByClassName('popup','*',document);
+			//console.log(found);
+			
+			//闭包隐含问题
+			function initAnchors(W3CEvent) {
+				for (var i=1; i < 4; i++) {
+					var anchor = document.getElementById('anchor' + i);
+					ADS.addEvent(anchor,'click',function(){
+						//ADS.eventPreventDefault(W3CEvent);
+						//console.log('My id is anchor' + i)
+						alert('My id is anchor' + i)
+					})
+				};
+			}
+			ADS.addEvent(window,'load',initAnchors);
+			
+			/**
+			 * ajax回调里的结果可能比较容易猜到，匿名函数本身是一个闭包，保存了变量a的值，从而可以访问。
+			 * 而第二个定时器回调主要要说明的就是，闭包所引用的值是在执行期生成的，而我们虽然在a = a+1前面定义了匿名函数，
+			 * 但是执行的时候因为匿名函数被插入到执行队列的尾部，那么a = a +1会先执行，然后在执行匿名函数，也就是说这个例子返回的值为2。
+			 */
+			/*
+			var a = 1;
+			setTimeout(function(){
+				console.log(a);
+			},1000);
+			a = a + 1;
+			*/
+			
+			var exam = 'a'.repeat(9);
+			console.log(exam);
+			
+			/* 把word-word转换为wordWord */
+			var s = "word-word";
+			console.log(ADS.camelize(s));
+			
+			//有问题，不执行
+			ADS.addEvent(document,'keydown',function(W3CEvent){
+				alert(1);
+				var key = ADS.getKeyPressed(W3CEvent);
+				console.log(key.code + ':' + key.value);
+			})
+			
+			ADS.editCSSRule('h1',{'color':'red'})
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		//]]>
+		</script>
+	</body>
+</html>

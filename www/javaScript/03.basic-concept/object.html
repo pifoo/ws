@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>object</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="../../common.css" />
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+		 /*
+		 * 函数与变量--------------------------------/
+		 */
+		 function test1(){
+			var msg = 45646;	// 局部变量
+		 };test1()
+		 // alert(msg)	// msg is not defined 变量在函数退出后就被销毁
+		 function test(){
+			msg = 45646;	// 全局变量
+		 }
+		 //test()   // 只有函数被调用过,变量才会被定义,
+		 //alert(msg)	// 45646   msg is not defined;没有调用函数时,会返回undefined
+
+		 /*
+		 * 数据类型--------------------------------/
+		 */
+		 // typeof操作符
+		 /*
+		 // Undefined 类型
+		 var ms;
+		 alert(ms) //undefined
+		 alert(ms == undefined) // true
+		 //alert(age)	// 未声明，会产生错误，对未声明的变量只能执行typeof操作
+		 //结论：未声明和未初始化的变量都返回 undefined;			alert(typeof age)
+		 */
+
+		 // Null 类型--------------------------------/
+		 var car = null;	// alert(typeof car)  // null
+		 // 实际上undefined值派生自null值的
+		 // alert(null == undefined);	// true
+		 // alert(null === undefined); // false
+
+		 // Boolean 类型  Boolean()类型转换
+
+
+		 // Number 类型--------------------------------/
+		 // 如果数字超出范围,前导将忽略,解析为忽略前导以后的值
+		 var num8 = 070;	// 八进制,
+		 var num16 = 0x5F;	// 十六进制
+		 // NaN
+		 // alert(NaN == NaN);	// false
+		 // isNaN()// 判断是否为数值 	// alert(isNaN(NaN))
+		 
+		 // 数值转换  Number(),转型函数; parseInt();parseFloat()
+		 // alert(parseInt("10",2))  	// 解析为二进制数
+		 // alert(parseInt(" 345BBB")) // 345  忽略前面的空格，直到解析到第一个不是数字为止
+		 // var n = "09"
+		 // alert(parseInt(n))
+		 
+		 // String类型--------------------------------/
+		 // String() 在不确定要转换的值是null还是undefined,可以使用此转型函数将任何类型的值转换为字符串
+		 // null和undefined没有toString()方法，如果是数值，参数可指定基数
+		 
+		 // alert(null.toString())	// Error:Cannot call method 'toString' of null
+		 // alert((10).toString(2))
+
+		 // Object类型--------------------------------/
+		 // Object的每个实例都具有下列属性和方法：
+		 /*constructor-保存着用于创建当前对象的函数
+		 hasOwnProperty-用于检查给定的属性名在当前的对象中是否存在；o.hasOwnProperty("name")
+		 isPrototypeOf(object)-用于检查传入的对象是否是另一个对象的原型
+		 propertyIsEnumerable(propertyName)-用于检查给定的属性是否能够使用for-in语句来枚举
+		 toString()-返回对象的字符串表示
+		 valueOf()-返回对象的原始值（字符串，数值，布尔值）
+		 */
+		 
+		 //var n = 1;
+		 //alert(n++)	// 1 先取值,再运算
+		 //alert(n)	// 2 
+		 //alert(++n)	// 2 先运算,再取值
+		 //alert(2)	// 2
+		 
+		 // 以构造函数的方式定义函数，最后一个参数为函数体
+		 var fun=new Function("a","b","return a+b");
+		 // alert(fun(10,5))
+
+		
+		//静态方法是不需要new一个实例再去调用的，通过“类名+方法名”直接调用。
+        
+        document.write("<h2>Hello,JavaScriptWorld!</h2>");
+        /*var aColors = ["red","green","blue"];
+         var aColors2 = aColors.concat("yellow","purple");  //链接数组元素
+         alert(aColors2.toString());
+         alert(aColors.toString());*/
+
+        var obj = new Object();// alert(typeof obj); //声明一个对象
+        alert(typeof Object);
+
+        /*var d = +new Date(); //创建一个Date对象，+：转换成数字类型（其实就是取当前日期的毫秒）
+         alert(typeof d);*/
+        obj.name = "pifoo";
+        //alert(obj.constructor); //=>object  对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始的 Object() 函数。
+        //alert(obj.prototype); //=>undefined  对该对象的对象原型的引用。对于所有的对象，它默认返回 Object 对象的一个实例。
+        alert(obj.toString());  //=>object Object
+        alert(obj.valueOf());   //=>object Object
+
+        function Demo() {
+            alert('demo');
+        };
+
+        var d = new Demo();
+        
+        
+        
+
+        
+        
+        var foo = {x: 10};
+		// 冻结对象
+		Object.freeze(foo);
+		console.log(Object.isFrozen(foo)); // true 
+		// 不能修改
+		foo.x = 100; 
+		// 不能扩展
+		foo.y = 200; 
+		// 不能删除
+		delete foo.x; 
+		console.log(foo); // {x: 10}
+		
+		
+		//ES5规范里，也使用Object.preventExtensions(o)方法防止扩展，或者使用Object.defineProperty(o)方法来定义属性：
+		//http://www.cnblogs.com/TomXu/archive/2012/02/06/2330609.html
+		var foo = {x : 10};
+		Object.defineProperty(foo, "y", {
+		  value: 20,
+		  writable: false, // 只读
+		  configurable: false // 不可配置
+		});
+		// 不能修改
+		foo.y = 200;
+		// 不能删除
+		delete foo.y; // false
+		// 防治扩展
+		Object.preventExtensions(foo);
+		console.log(Object.isExtensible(foo)); // false
+		// 不能添加新属性
+		foo.z = 30;
+		console.log(foo); //{x: 10,y:20}
+
+        </script>
+    </body>
+</html>

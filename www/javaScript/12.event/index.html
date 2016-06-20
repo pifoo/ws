@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>event</title>
+		<script type="text/javascript" src="event.js"></script>
+	</head>
+	<body style="text-align:center;margin: 0 auto;font-size: 12px;width:100%;height:100%;">
+		<div id="Div" style="display:block;border:1px solid #EEE;padding:10px;">
+			<input id="btn" type="button" value="button" />
+		</div>
+		<ul id="menu" style="position:absolute;visibility:hidden;background:#F60;width:100px;">
+			<li><a href="">Nicholas site</a></li>
+			<li><a href="">Nicholas site</a></li>
+			<li><a href="">Nicholas site</a></li>
+			<li><a href="">Nicholas site</a></li>
+		</ul>
+		<script type="text/javascript">
+        //<![CDATA[
+           //var btn = document.getElementById("btn");
+           var oDiv = document.getElementById("Div");
+           function handle(event){	// 事件对象：在触发DOM上的某个事件时，会产生一个事件对象event
+       			event = EventUtil.getEvent(event);
+						if(event.shiftKey){//修改键  shiftKey,ctrlKey,altKey,metaKey
+							alert("shift被按下了")
+						}
+           		switch(event.type){
+           		   /*case "click":
+						alert("客户区坐标位置\n X:" + event.clientX + "\nY:" + event.clientY);
+						alert("屏幕坐标位置\n X:" + event.screenX + "\nY:" + event.screenY);
+	           			alert(event.type);
+						alert(event.currentTarget === document.body);
+						alert(this === document.body);
+						alert(event.target === btn);*
+           		   		break;
+				  /*case "mousedown":
+	           			alert(event.type);
+	           			break;
+           			case "mouseover":
+	           			alert(event.type);
+	           			break;
+	           		case "mouseout":
+	           			alert(event.type);
+	           			break;*/
+	           		case "contextmenu":
+	           			EventUtil.preventDefault(event);
+	           			var menu = document.getElementById("menu");
+	           			menu.style.left = event.clientX + "px";
+	           			menu.style.top = event.clientY + "px";
+	           			menu.style.visibility = "visible";
+					//	return;
+	           		//	breadk;
+           		};	
+           };
+           //EventUtil.addHandler(btn,"click",handle);
+		   //EventUtil.addHandler(btn,"mousedown",handle);
+           //EventUtil.addHandler(btn,"mouseover",handle);
+           //EventUtil.addHandler(btn,"mouseout",handle);
+           EventUtil.addHandler(oDiv,"contextmenu",handle);
+           EventUtil.addHandler(document,"click",function(event){
+           	 	document.getElementById("menu").style.visibility = "hidden";
+           });
+           EventUtil.addHandler(document,"mousewheel",function(event){ 	// FF:DOMMouseScroll
+           	 	event = EventUtil.getEvent(event);
+           	 	var delta = EventUtil.getWheelDelta(event);
+           	 	alert(delta);
+           });
+           
+           // 去掉字符串两端的所有空格
+           var s = "  adf dsfsf    "; // alert("|"+s.trim()+"|")
+           
+           // arguments继承数组的join()方法
+           function msg(){
+           		alert([].join.call(arguments,'\n'));
+           };//msg("adf","sfa",323);
+           
+         		  
+		  
+		   
+		  
+        //]]>
+        </script>
+	</body>
+</html>

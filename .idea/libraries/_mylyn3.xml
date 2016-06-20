@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name=".mylyn3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/_www/workspace/Android/J2eeLearning/.metadata/.mylyn/repositories.xml.zip!/" />
+      <root url="jar://$PROJECT_DIR$/_www/workspace/Android/J2eeLearning/.metadata/.mylyn/tasks.xml.zip!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

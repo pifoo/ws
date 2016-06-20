@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Socket/Socket.iml" filepath="$PROJECT_DIR$/Socket/Socket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XMLParse/XMLParse.iml" filepath="$PROJECT_DIR$/XMLParse/XMLParse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todoJava.iml" filepath="$PROJECT_DIR$/todoJava.iml" />
+    </modules>
+  </component>
+</project>

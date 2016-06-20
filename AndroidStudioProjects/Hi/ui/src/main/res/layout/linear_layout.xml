@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_gravity="left"
+            android:background="#FF7878"
+            android:gravity="center"
+            android:text="O(∩_∩)O哈哈~" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:background="#FF7428"
+            android:gravity="center"
+            android:text="(*^__^*) 嘻嘻……" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请输入要保存的电话号码" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空" />
+        </LinearLayout>
+
+        <!--
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="one"
+            android:background="#98FB98"
+            />
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="two"
+            android:background="#FFFF00"
+            />
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="three"
+            android:background="#FF00FF"
+            />
+    -->
+    </LinearLayout>
+</ScrollView><!--
+
+By: http://blog.csdn.net/coder_pig/article/details/46980793
+
+1) Weight属性的使用
+    布局中组件排列方式为水平方向：  android:orientation="horizontal"：
+    layout_width="0dp|wrap_content" -> 直接按比例 划分 ,反之亦然
+2) 比例计算
+    layout_width="match_parent|fill_parent" -> 1:2:3(3个fill_parent)   ->  计算：
+    1个fill_parent - 3个fill_parent = -2个fill_parent
+    1-2*(1/(1+2+3))=2/3fill_parent
+    1-2*(2/6)=1/3
+    1-2*(3/6)=0
+    => 2:1:0
+3) android:orientation="vertical"：布局为垂直排列时：
+     子元素layout_gravity只有水平方向的设置才起作用，即：left，right，center_horizontall 是生效的。**
+
+
+
+
+
+-->

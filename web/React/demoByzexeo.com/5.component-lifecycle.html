@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react ref</title>
+	<script type="text/javascript" src="./dist/react.js"></script>
+	<script type="text/javascript" src="./dist/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+    <script type="text/jsx">
+		var EasyForm = React.createClass({
+			getDefaultProps: function() {
+				console.log('getDefaultProps');
+			},
+
+			getInitialState: function() {
+				console.log('getInitialState');
+				return {
+					titleMessage: 'react is awesome!',
+					count: 0,
+				}
+			},
+
+			componentWillMount: function() {
+				console.log('componentWillMount');
+				var self = this;
+				this.timer = setInterval(function(){
+					self.setState({
+						count: self.state.count + 1
+					})
+				}, 1000);
+
+				this.setState({ // 1. 更新数据 ，不会二次渲染
+					titleMessage: 'welcome to react'
+				})
+			},
+			componentDidMount: function() {
+				console.log('componentDidMount');
+				console.log(this.getDOMNode());
+			},
+
+			componentWillUnmount: function() {
+				console.log('you are tring to kill me !!');
+				clearInterval(this.timer);
+			},
+
+			killMySelf: function() {
+				React.unmountComponentAtNode(document.getElementById('app'));
+			},
+
+			render: function(){
+				var i = 0;
+				console.log('渲染... ' + i++); // 1.1 可以看出，不会二次渲染
+				return (
+					<div>
+						<h1>我想说：{this.state.titleMessage} {this.state.count}</h1>
+						<button onClick={this.killMySelf}>卸载这个组件</button>
+						<SubMessage />
+					</div>
+				)
+			}
+		});
+
+		var SubMessage = React.createClass({
+			render: function() {
+				return (
+					<h3>这是一个子组件</h3>
+				)
+			}
+		});
+
+		React.render(<EasyForm/>, document.getElementById('app'));
+
+    </script>
+</body>
+</html>

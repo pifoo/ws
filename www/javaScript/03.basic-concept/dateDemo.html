@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../../common.css" />
+<title>dateDemo</title>
+<style type="text/css">
+body {
+	font-size:20px;
+	line-height:180%;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" >
+	d = new Date();
+	document.write(d.toString() + "<br/>");
+	
+	label:for(var i=0;i<100;i++){   //标记：可以出现在任意行的起始位置
+		document.write(i + ",  ");
+		if(i==1) break label;       //当变量循环到i=1时，跳出标记所定的循环体
+	}
+	
+	var a ={                        //对象
+		b:{                         //子对象
+			c:{                     //子对象（c包含两个成员方法d()和属性e）
+				d:function(){                       //定义方法 
+					document.write("Hi……" + "<br/>" );			  
+				},
+				e:"Hello,World!" + "<br/>"          //定义属性
+			}
+		}
+	};
+	document.write(a.b.c.e);                        //调用属性e
+	a.b.c.d();                                      //调用方法d()
+	
+	var r = new RegExp("a","gi");
+	var s = "javascript!=JAVA";
+	var a = s.match(r);
+	document.writeln(a);
+//	document.write(a.index);
+
+//	动态性是指，在一个Javascript对象中，要为一个属性赋值，我们不必事先创建一个字段，只需要在使用的时候做赋值操作即可，如下例：				
+	var obj = new Object();
+	obj.name = "an object";
+	obj.sayHi = function(){
+		return "Hi";
+	}
+	document.writeln(obj.name);
+	document.writeln(obj.sayHi());
+	
+	//定义一个"类"，Address
+function Address(street, xno){
+    this.street = street || 'Huang Quan Road';
+    this.xno = xno || 135;
+    this.toString = function(){
+       return "street : " + this.street + ", No : " + this.xno;   
+    }
+}
+ 
+//定义另一个"类"，Person
+function Person (name, age, addr) {
+  this.name = name || 'unknown';
+  this.age = age;
+  this.addr = addr || new Address(null, null);
+  this.getName = function () {return this.name;}
+  this.getAge = function(){return this.age;}
+  this.getAddr = function(){return this.addr.toString();}
+}
+ 
+//通过new操作符来创建两个对象，注意，这两个对象是相互独立的实体
+var jack = new Person('jack', 26, new Address('Qing Hai Road', 123));
+var abruzzi = new Person('abruzzi', 26);
+ 
+//查看结果
+document.writeln(jack.getName());
+document.writeln(jack.getAge());
+document.writeln(jack.getAddr());
+ 
+document.writeln(abruzzi.getName());
+document.writeln(abruzzi.getAge());
+document.writeln(abruzzi.getAddr());
+document.writeln("<br/>");
+
+if("\v"=="v") {                                     //判断是否为IE浏览器
+	document.write("这是IE浏览器<br/>");
+   }else {
+	document.write("这不是IE浏览器<br/>");
+   }
+
+function prime(MAX) {                  //检查素数的正则表达式
+    var re = /^(11+?)\1+$/,
+        n, C = '1', s = C,
+        r = [], j = 0;
+
+    while ((n = (s += C).length) < MAX) {
+        !re.test(s) && (r[j++] = n);
+    }
+    return r;
+}
+//document.writeln(prime(10000).length);
+</script>
+<input type="button" value="Button 1" id="btn1"  />
+<input type="button" value="Button 2" id="btn2"  />
+<input type="button" value="Button 3" id="btn3"  onclick="buttonClicked();"/>
+<script type="text/javascript" >
+function buttonClicked(){
+    var text = (this === window) ? 'window' : this.id;
+    alert( text );
+}
+var button1 = document.getElementById('btn1');
+var button2 = document.getElementById('btn2');
+button1.onclick = buttonClicked;
+button2.onclick = function(){   buttonClicked();   };
+	
+	
+</script>
+
+
+</body>
+</html>

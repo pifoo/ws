@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="android-support-v41">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/_www/workspace/Android/AndroidLearning/MusicPlayer/libs/android-support-v4.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

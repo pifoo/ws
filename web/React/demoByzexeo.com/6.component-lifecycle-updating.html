@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react ref</title>
+	<script type="text/javascript" src="./dist/react.js"></script>
+	<script type="text/javascript" src="./dist/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+    <script type="text/jsx">
+		var MessageBox = React.createClass({
+			getDefaultProps: function() {
+
+			},
+
+			getInitialState: function() {
+				return {
+					count: 0,
+				}
+			},
+
+			componentWillMount: function() {
+
+			},
+			componentDidMount: function() {
+
+			},
+
+			componentWillUnmount: function() {
+
+			},
+
+			shouldComponentUpdate: function(nextProp, nextState) {
+				console.log('shouldComponentUpdate');
+				if(nextState.count > 10){
+					return false;
+				}
+				return true;
+			},
+			componentWillUpdate: function(){
+				console.log('componentWillUpdate');
+			},
+			componentDidUpdate: function(){
+				console.log('componentDidUpdate');
+			},
+			killMySelf: function() {
+				React.unmountComponentAtNode(document.getElementById('app'));
+			},
+			doUpdate: function() {
+				this.setState({
+					count: this.state.count + 1
+				})
+			},
+
+			render: function(){
+				console.log('渲染');
+				return (
+					<div>
+						<h1>计算：{this.state.count}</h1>
+						<button onClick={this.killMySelf}>卸载这个组件</button>
+						<button onClick={this.doUpdate}>手动更新组件(包括子组件)</button>
+						<SubMessage count={this.state.count} />
+					</div>
+				)
+			}
+		});
+
+		var SubMessage = React.createClass({
+			componentWillReceiveProps: function(nextProp) {
+				console.log('子组件将要获得prop');
+			},
+			shouldComponentUpdate: function(nextProp, nextState){
+				if(nextProp.count > 5){
+					return false;
+				}
+				return true;
+			},
+			render: function() {
+				return (
+					<h3>当前计数是： {this.props.count}</h3>
+				)
+			}
+		});
+
+		React.render(<MessageBox/>, document.getElementById('app'));
+
+    </script>
+</body>
+</html>

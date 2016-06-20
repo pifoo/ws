@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>变量、作用域、内存</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+
+           // 不能给基本类型的值添加属性和方法 ( 返回： undefined)
+		   // ECMAScript中所有函数的参数都是按值传递的 ( 参数只能按值传递，参数为局部变量 )
+		
+		/* 按值传递（基本类型，保存在栈内存）
+		 * 按址传递（引用类型，保存在堆内存，变量保存的只是一个指针，指向堆内存中的对象）
+		 * 对象作为参数，是按值传递的
+		 * 
+		 * 传递参数：
+		   function add(num){
+		   		num += 10;
+				return num;
+		   }
+		   alert(add(10))	// 20
+		   var count = 20;
+		   var result = add(count) ; // 数值count 赋值给num,影响到了内部num值的变化 ，但不会影响外部count的变化 (按值传递)
+		   alert(count)		// 20,没有变化
+		   alert(result)	// 30
+		 
+			//对象是按值传递的
+			function setName(obj){//参数其实是函数的局部变量
+				obj.name = "Nicholas";
+				// 即使在函数内部修改了参数的值，但原始的引用仍保持不变,当在函数内部重写obj时，这个变量引用的就是一个局部对象了
+				// 这个局部对象会在函数执行完毕后立即被销毁
+				obj = new Object();	 // 局部对象	
+				obj.name = "Greg";
+				alert(obj.name)		// Greg
+			}  
+			var person = new Object();
+			setName(person);		
+			alert(person.name);   // Nicholas
+		*/  
+		 
+		 /* typeof 基本数据类型检测,  所有引用类型均返回object
+		  * instanceof  语法： resutl = variable instanceof constructor // 如果变量是给定引用类型(由构造函数表示)的实例（这里即对象）,则返回true;
+		  
+		  * var person = new Object();  
+		  * alert(person instanceof Object) // true 
+		  * 
+		  * 执行环境：每个函数都有自己有执行环境，一般 window对象为全局环境；每个执行环境都有一个与之关联的变量对象
+		  * 当代码在一个环境中执行时，会创建变量对象的一个作用域链
+		  * 作用域链的用途：是保证对执行环境有权访问的所有变量和函数的有序访问
+		  */
+		 
+		  // 没有块级作用域
+		  /*if(true){
+		  	var color = "blue";
+		  }	
+		  alert(color) // blue 块语句{}的中代码依然能被外部访问
+		  function(){
+		  	var color = "blue";
+		  } // alert(color)   但函数{}语句中的代码例外
+		   alert(color) 
+		  for(var i=0;i<10;i++){
+		  	//doSomething(i);
+		  };
+		  alert(i)  10 */
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+        //]]>
+        </script>
+	</body>
+</html>

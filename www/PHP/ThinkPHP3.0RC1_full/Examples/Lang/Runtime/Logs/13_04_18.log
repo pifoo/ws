@@ -1,0 +1,21 @@
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ app_begin ] --START--
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run CheckTemplate Behavior [ RunTime:0.049504s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run CheckLang Behavior [ RunTime:0.018588s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ app_begin ] --END-- [ RunTime:0.098105s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_template ] --START--
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run LocationTemplate Behavior [ RunTime:0.092044s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_template ] --END-- [ RunTime:0.092220s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_parse ] --START--
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | NOTIC: [8] Use of undefined constant CONFIG_PATH - assumed 'CONFIG_PATH' f12c0a77906a0f355c95666536d66c0f.php 第 58 行.
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | NOTIC: [2] highlight_file(CONFIG_PATHtags.php) [<a href='function.highlight-file'>function.highlight-file</a>]: failed to open stream: No such file or directory f12c0a77906a0f355c95666536d66c0f.php 第 58 行.
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | NOTIC: [2] highlight_file() [<a href='function.highlight-file'>function.highlight-file</a>]: Failed opening 'CONFIG_PATHtags.php' for highlighting f12c0a77906a0f355c95666536d66c0f.php 第 58 行.
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run ParseTemplate Behavior [ RunTime:0.160989s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_parse ] --END-- [ RunTime:0.161119s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_filter ] --START--
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run ContentReplace Behavior [ RunTime:0.039037s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run TokenBuild Behavior [ RunTime:0.043306s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run ShowRuntime Behavior [ RunTime:0.083890s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_filter ] --END-- [ RunTime:0.166729s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_end ] --START--
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Run ShowPageTrace Behavior [ RunTime:0.040405s ]
+[ 2013-04-18T09:15:17+08:00 ] /PHP/ThinkPHP3.0RC1_full/Examples/Lang/ | DEBUG: Tag[ view_end ] --END-- [ RunTime:0.040628s ]

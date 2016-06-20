@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>video</title>
+		<meta name="description" content="" />
+		<meta name="author" content="hewj" />
+	</head>
+	<body>
+		<script>
+			//localStorage  方法存储的数据没有时间限制
+			//sessionStorage  方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除
+			//setItem("key","value");
+			//getItem("key");
+			//removeItem();清除键值对使用
+			//key()
+			//clear()//清除所有键值
+			//JSON.stringify() 将json转为字符串
+			//JSON.parse() 将字符串转为json格式
+			localStorage.lastname = "Smith";
+			localStorage.setItem("b","isaac");//设置b为"isaac"
+			document.write("Last name: " + localStorage.lastname + "<br/>");
+			document.write("b: " + localStorage.b + "<br/>");
+			
+			//key()方法，可以在不知道有哪些键值的时候使用
+			var storage = window.localStorage;
+			(function showStorage(){
+				for(var i=0;i<storage.length;i++){
+					//key(i)获得相应的键，再用getItem()方法获得对应的值
+			  		document.write(storage.key(i)+ " : " + storage.getItem(storage.key(i)) + "<br>");
+			 	}
+			})();
+			
+			//对用户访问页面的次数进行计数
+			if (localStorage.pagecount){
+				localStorage.pagecount=Number(localStorage.pagecount) +1;
+			}else{
+		 		localStorage.pagecount=1;
+			}
+			document.write("Visits "+ localStorage.pagecount + " time(s).<br/>");
+			
+			/*
+			通过map结合localstorage实现简单可调配的本地缓存
+			ArrayObjectJSONMaplocalStorage
+			实现摘要：通过Array和Object实现Map存储，通过localStorage实现本地缓存，通过函数代理注册传入函数（如回调函数等）。
+			代理函数用来将传入函数添加为自身属性或成员方法以便调用，即代理函数就是一种反射方式。
+			另外，Map存储中含有将Object转换为JSON对象和JSON字符串的方法，可以供需而用。以下是具体实现方式：
+			*/
+			/**注册函数域*/
+			if(typeof noneorone == 'undefined'){
+				//根域
+				noneorone = {};
+				//工具域
+				noneorone.util = {};
+				//测试域
+				noneorone.test = {};
+			}
+			 
+			/**
+			 * map存储
+			 * @date 2012-02-03
+			 * @author sunnysolong
+			 */
+			noneorone.util.map = (function(){
+				/*键集合*/
+				this.keys = new Array();
+				/*数据存储对象*/
+				this.data = new Object();
+				/**
+				 * 为缓存对象添加键值对
+				 * @param {String} key
+				 * @param {String} value
+				 */
+				this.put = function(key,value){
+					if(null == this.data[key]){
+						//若指定的键不存在，则向键集合中追加该键
+						this.keys.push(key);
+					}
+					//将对应的值与键关联
+					this.data[key] = value;
+					return data;
+				};
+				
+				/**
+				 * 返回指定键关联的值
+				 * @param {Object} key
+				 * @return {Object} 与键对应的值
+				 */
+				this.get = function(key){
+					//检索键对应值并返回
+					return this.data[key];
+				};
+			 
+				/**
+				 * 返回已存储大小
+				 * @return {Integer} 目前已存储容量
+				 */
+				this.size = function(){
+					//键集合大小就是已存容量
+					return this.keys.length;
+				};
+				
+				/**
+				 *	通过键删除指定的键值对
+				 * @param {String} key
+				 */
+				this.remove = function(key){
+					//删除键
+					this.keys.remove(key);
+					//清空对应的存储值
+					this.data[key] = null;
+				};
+				
+				/**
+				 * 删除所有键值对
+				 */
+				this.removeAll = function(){
+					for(var i=0; i<this.size(); i++){
+						//循环所有元素，调用移除单个元素的方法依次删除
+						this.remove(this.keys[i])
+					}
+				};
+				
+				/**
+				 * 获取已存储的所有对象集合
+				 * @return {Array}
+				 */
+				this.entrySet = function(){
+					//重建同级容量的数组，用来存储原始存储对象中所有元素
+					var entries = new Array(this.size());
+					for(var i=0; i<this.size(); i++){
+						//迭代集合元素，并以键值对方式存储在定义的实体集合中
+						entries[i] = {key: this.keys[i], value: this.data[this.keys[i]]}
+					}
+					//返回该实体集合
+					return entries;
+				};
+				
+				/**
+				 * 将键值对转为json串
+				 * @return {String} 返回转换后的字符串
+				 */
+				this.toString = function(){
+					var jsonStr = new String('{');
+					for(var i=0; i<this.size(); i++){
+						jsonStr += '"'+this.keys[i]+'":"'+this.data[this.keys[i]]+'",';
+					}
+					jsonStr.substring(0, jsonStr.lastIndexOf(','));
+					return jsonStr.concat('}');
+				},
+				
+				/**
+				 * 将键值对封装成JSON对象
+				 * @return {Object} 返回JSON对象
+				 */
+				this.toJSON = function(){
+					var obj = new Object({});
+					for(var i=0; i<this.size(); i++){
+						obj[this.keys[i]] = this.data[this.keys[i]];
+					}
+					return obj;
+				}
+				
+			}); 
+			 
+			 
+			/**
+			 * 本地缓存处理
+			 * @author wangmeng
+			 * @date 2012-02-10
+			 */
+			noneorone.util.cache = ({
+			 
+				/*元数据存储*/
+				data: new noneorone.util.map,
+				/*模型数据存储*/
+				model: new noneorone.util.map,
+				
+				/**
+				 * 存储数据
+				 * @param {Integer} cityId
+				 * @param {String} modelId
+				 * @param {String} cacheKey
+				 * @param {String} cacheValue
+				 */
+				storeData: function(cityId, modelId, cacheKey, cacheValue){
+					this.data.put(cacheKey, cacheValue);
+					this.model.put(modelId, this.data.toJSON());
+					localStorage.setItem(cityId, JSON.stringify(this.model.toJSON()));
+				},
+				
+				/**
+				 * 获取数据
+				 * @param {String} cityId
+				 * @param {String} modelId
+				 * @param {String} cacheKey
+				 * @param {Function} callBack
+				 */
+				getData: function(cityId, modelId, cacheKey, callBack){
+					var value = JSON.parse(localStorage.getItem(cityId))[modelId][cacheKey];
+					noneorone.util.ReflectProxy.passParam(callBack, value);
+				},
+				
+				
+				/**
+				 * 删除数据
+				 */
+				removeData: function(){
+					this.data.removeAll();
+					this.model.removeAll();
+					localStorage.remove();
+				}
+				
+			});
+			 
+			/**
+			 * 代理map
+			 */
+			noneorone.util.proxyMap = ({
+				/**存放关联值*/
+				map: new noneorone.util.map(),
+				
+				/**注册函数*/
+				reg: function(key, value){
+					this.map.put(key, value);
+					return map;
+				},
+				
+				/**获取存储函数集*/
+				getStore: function(){
+					return this.map;
+				}
+			});
+			 
+			 
+			/**
+			 * 代理工厂
+			 */
+			noneorone.util.proxyFactory = (function(){
+				var proxyMap = noneorone.util.proxyMap.getStore();
+				for(var i=0; i<proxyMap.size(); i++){
+					var key = proxyMap.keys[i], value = proxyMap.data[key];
+					this[key] = value;
+				}
+			});
+			 
+			 
+			/**
+			 * 反射代理
+			 * @type Function | Object
+			 */
+			noneorone.util.ReflectProxy = ({
+			 
+				/**
+				 * 注册函数(对象)
+				 * @param {String} id: 标识
+				 * @param {Function} fn: 函数(对象)
+				 */
+				reg: function(id, fn){
+					noneorone.util.proxyMap.reg(id, fn);
+				},
+				
+				
+				/**
+				 * 参数传递
+				 * @param {String} id: 标识
+				 * @param {String} param: 参数
+				 */
+				passParam: function(id, param){
+					new noneorone.util.proxyFactory()[id](param);
+				}
+				
+			});
+			 
+			 
+			/**
+			 * 缓存测试
+			 */
+			noneorone.test.store = (function(){
+				//注册函数对象
+				noneorone.util.ReflectProxy.reg('callback-test', noneorone.test.callBackTest);
+				//数据存储本地缓存
+				noneorone.util.cache.storeData(757, 'community', 'peopleWords', 'da jia zai shuo ...');
+				//获取本地缓存数据
+				noneorone.util.cache.getData(757, 'community', 'peopleWords', "callback-test");
+			});
+			 
+			 
+			/**
+			 * 回调测试
+			 * @param {Object} value: 返回值
+			 */
+			noneorone.test.callBackTest = function(value){
+				alert('returned_value >>> '+value);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

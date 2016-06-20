@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react</title>
+	<script type="text/javascript" src="./dist/react.js"></script>
+	<script type="text/javascript" src="./dist/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="hello"></div>
+	<div id="app"></div>
+    <script type="text/jsx">
+		// 0. 生成组件并渲染到页面
+		/*
+		React.render(
+			<h1>Hello, world!</h1>,
+			//React.createElement('h2', null, 'Hello, world!'),
+			document.getElementById('hello')
+		);
+		*/
+
+		// 1 定义组件
+		var MessageBox = React.createClass({
+			// 4 初始化值
+			getInitialState: function() {
+				return {
+					isVisible: true,
+					titleMessage: 'React(来自state)',
+					clickCount: 0,
+					subMessage:[
+						'我会代码搬砖',
+						'我会花式搬砖',
+						'不说了，去搬砖了....'
+					]
+				}
+			},
+			// 事件
+			clickMe: function(e) {
+				console.log('clickMe..');
+				console.log(e);
+				console.log(e.nativeEvent);
+				console.log(e.target);
+				this.setState({
+					clickCount: this.state.clickCount + 1
+				})
+			},
+			// 3.3 嵌套、循环组件
+			render: function() {
+				// 循环组件<SubMessage/>
+				var subMessageList = [];
+				for (var i = 0; i < 3; i++) {
+					subMessageList.push(
+						// 3.4 添加key属性
+						<SubMessage messages={this.state.subMessage} key={'SubMessage'+i}/>
+					);
+				}
+				// 样式
+				var styleObj = {
+					display: this.state.isVisible ? 'block' : 'none'
+				}
+
+				return (
+					<div>
+						<h1 style={styleObj} onClick={this.clickMe}>
+							{this.props.title}     { /*获取从顶层传递的数据*/ }
+							{this.state.titleMessage + ' 点击了 ' + this.state.clickCount + ' 次'} {/* 初始值 */}
+						</h1>
+						<b>点击了 {this.state.clickCount} 次</b>
+						{subMessageList}  {/* 循环组件<SubMessage/> */}
+					</div>
+				)
+			}
+		});
+		// 3.1 子组件 嵌套组件
+		var SubMessage = React.createClass({
+			// 5.2 验证消息类型
+			propTyes: function() {
+				messages: React.propTyes.array.isRequired; // 不可为空
+			},
+			// 5.1 以声明式的方式来定义 props 的默认值
+			getDefaultProps: function(){
+				return {
+					messages: ['默认的消息'] // 当解析不到父组件传递的消息时显示
+				}
+			},
+
+			render: function() {
+				var msgs = [];
+				// 5. props
+				this.props.messages.forEach(function(msg, index){ // 接收并解析父组件传递的消息 messages
+					msgs.push(
+						<p>码农说：{msg}</p>
+					)
+				});
+				return (
+					<div>
+						<h2>SubMessage</h2>
+						<Footer/>
+						<div>{msgs}</div>
+					</div>
+				)
+			}
+		});
+		// 3.2 子组件
+		var Footer = React.createClass({
+			render: function() {
+				return <p>welcome to react.</p>
+			}
+		});
+
+		// 从顶层传递消息
+		var title = '你好！';
+
+		// 2 渲染组件到页面
+		// React.render(
+		var msBox = React.render( // 赋值给msBox，msBox则为最顶层对象，可在控制台操作相关属性...
+			<MessageBox title={title}/>,
+			document.getElementById('app'),
+			function() {	// callback
+				console.log('渲染完成...');
+			}
+		);
+		// 修改titleMessage
+		// msBox.setState({isVisible : false, titleMessage:'修改后的titleMessage.'});
+
+
+    </script>
+</body>
+</html>

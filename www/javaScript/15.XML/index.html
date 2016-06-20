@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>xml</title>
+		<script type="text/javascript" src="xml.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+        /*		
+         * XML的解析和序列化
+         */
+         /*	 //var xmldom = document.implementation.createDocument(namespaceUri,root,doctype);
+			   var xmldom = document.implementation.createDocument("","root",null);
+			   //alert(xmldom.documentElement.tagName);	// root
+			   var child = xmldom.createElement("child");
+			   xmldom.documentElement.appendChild(child);
+			   
+			   //检测浏览器是否支持DOM2级XML
+			   var hasXmlDom = document.implementation.hasFeature("XML","2.0");
+			   //alert(hasXmlDom);
+			   
+			   
+			   //解析XML为DOM文档
+			   var parser = new DOMParser();	// 创建DOMParser实例
+			   var xmldom = parser.parseFromString("<root><child/></root>","text/xml");	// 返回一个Documnet的实例
+			   //alert(xmldom.documentElement.tagName);	// "root"
+			   //alert(xmldom.documentElement.firstChild.tagName);	// "child"
+			   
+			   var anotherChild = xmldom.createElement("child");
+			   xmldom.documentElement.appendChild(anotherChild);
+			   
+			   var children = xmldom.getElementsByTagName("child");
+			   // alert(children.length);	// 2
+			   
+			   
+			   // 将DOM文档序列化为XML字符串
+			   var serializer = new XMLSerializer();
+			   var xml= serializer.serializeToString(xmldom);
+			   //alert(xml);
+			   
+			   
+			   // DOM3级加载和保存  Opera支持
+			   var hasLSSync = document.implementation.hasFeature("LS","3.0");
+			   var hasLSAsync = document.implementation.hasFeature("LS-Async","3.0");
+			   //alert(hasLSSync);alert(hasLSAsync);
+        */   
+           // IE对XML的支持
+           // 尝试创建每个版本的实例并观察是否有错误发生，以便确定哪个版本可用
+         /*  function createDocument(){
+           		if(typeof arguments.callee.activeXString != "string"){
+           			var versions = ["MSXML2.DOMDocument.6.0","MSXML2.DOMDocument.3.0","MSXML2.DOMDocument"];
+           			for (var i=0,len=versions.length;i<len;i++){
+           				try{
+           					var xmldom = new ActiveXObject(versions[i]);
+           					arguments.callee.activeXString = versions[i];
+           					return xmldom;
+           				}catch(ex){
+           					// 跳过
+           				}
+           			}
+           		};
+           		return new ActiveXOject(arguments.callee.activeXString);
+           };
+           
+           var xmldom = createDocument();
+           xmldom.loadXML("<root><child><child/></toot>");
+           
+           //alert(xmldom.documentElement.tagName);
+           alert(xmldom.xml)
+           */
+           
+           
+           
+           
+           /*
+            * XPath  XPathEvaluator,XPathResult
+            */ 
+			var supportsXPath = document.implementation.hasFeature("XPath","3.0");
+			//alert(supportsXPath);
+			/*
+			 * XPathEvaluator 用于在特定的上下文中对XPath表达式求值,这个类型有三个方法：
+			 * createExpression(expression,nsresolver);
+			 * createNSResolver(node);
+			 * evaluate(expression,context,nsresolver,type,result); 用的比较多
+			 * 
+			 */
+			
+			/*
+			 * XPathResult
+			 */
+			//var parser = new DOMParser();	// 创建DOMParser实例
+			//var xmldom = parser.parseFromString("<root><child/></root>","text/xml");
+		/*	var result = xmldom.evaluate("employee/name",xmldom.documentElement,null,XPathResult.ORDERED_NODE_ITERATOR_TYPE,null);
+			if(result !== null){
+				var node = result.iterateNext();
+				while(node){
+					alert(3)
+					alert(node.tagName);
+					node = node.iterateNext();
+				}
+			};
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+           
+        //]]>
+        </script>
+	</body>
+</html>

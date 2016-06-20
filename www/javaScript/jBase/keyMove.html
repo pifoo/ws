@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用键盘控制Div的移动</title>
+		<style type="text/css">
+			#move {
+				width: 20px;
+				height: 20px;
+				background: #ff0000;
+				position: absolute;
+			}
+			#move.color1 {
+				background: #0f0;
+			}
+			#move.color2 {
+				background: #00f;
+			}
+			#move.color3 {
+				background: #ff0;
+			}
+			
+			#move_2{
+				width: 260px;
+				height: 205px;
+				margin:0 auto;
+				border: 1px solid #EEE;
+			}
+			#move_2 span{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				margin: 20px 0 0 20px;
+				border: 1px solid #CCC;
+				background: #EEE;
+			}
+		</style>
+		<script type="text/javascript">
+			var bLeft = false;
+			var bRight = false;
+			var bTop = false;
+			var bBottom = false;
+
+			setInterval(function() {
+				var oDiv = document.getElementById('move').getElementsByTagName('span');
+				
+				if(bRight) {
+					oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+				} else if(bLeft) {
+					oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+				}
+
+				if(bTop) {
+					oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+				} else if(bBottom) {
+					oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+				}
+			}, 30);
+
+			document.onkeydown = function(ev) {
+				var oEvent = ev || event;
+				var oDiv = document.getElementById('move_2').getElementsByTagName('span');
+				var i=0;
+				oDiv[i].index = i;
+				if(oEvent.ctrlKey) {
+					i++;
+					switch(oEvent.keyCode) {
+						case 49:
+							oDiv[0].style.background = 'green';
+							return false;
+							break;
+						case 50:
+							oDiv[1].style.background = 'blue';
+							return false;
+							break;
+						case 51:
+							oDiv[2].style.background = 'yellow';
+							return false;
+							break;
+						case 52:
+							oDiv[3].style.background = 'red';
+							return false;
+							break;
+						case 38:
+							var oldWidth = oDiv.offsetWidth;
+							var oldHeight = oDiv.offsetHeight;
+							oDiv.style.width = oDiv.offsetWidth * 1.5 + 'px';
+							oDiv.style.height = oDiv.offsetHeight * 1.5 + 'px';
+							oDiv.style.left = oDiv.offsetLeft - (oDiv.offsetWidth - oldWidth) / 2 + 'px';
+							oDiv.style.top = oDiv.offsetTop - (oDiv.offsetHeight - oldHeight) / 2 + 'px';
+							break;
+						case 40:
+							var oldWidth = oDiv.offsetWidth;
+							var oldHeight = oDiv.offsetHeight;
+							oDiv.style.width = oDiv.offsetWidth * 0.75 + 'px';
+							oDiv.style.height = oDiv.offsetHeight * 0.75 + 'px';
+							oDiv.style.left = oDiv.offsetLeft - (oDiv.offsetWidth - oldWidth) / 2 + 'px';
+							oDiv.style.top = oDiv.offsetTop - (oDiv.offsetHeight - oldHeight) / 2 + 'px';
+							break;
+					}
+				} else {
+					switch(oEvent.keyCode) {
+						case 39:
+							bRight = true;
+							break;
+						case 37:
+							bLeft = true;
+							break;
+						case 38:
+							bTop = true;
+							break;
+						case 40:
+							bBottom = true;
+							break;
+					}
+				}
+			};
+
+			document.onkeyup = function(ev) {
+				var oEvent = ev || event;
+				switch(oEvent.keyCode) {
+					case 39:
+						bRight = false;
+						break;
+					case 37:
+						bLeft = false;
+						break;
+					case 38:
+						bTop = false;
+						break;
+					case 40:
+						bBottom = false;
+						break;
+				}
+			};
+		</script>
+		<br/>
+	</head>
+	<body>
+		<!--div style="position:absolute; bottom:10px; width:95%; text-align:center; font-size:12px;">
+			↑：向上移动 | ↓：向下移动 | ←：向左移动 | →：向右移动 | ctrl+↑：放大 | ctrl+↓：缩小 | ctrl+1：绿色 | ctrl+2：蓝色 | ctrl+3：黄色
+		</div>
+		<div id="move"></div-->
+		<div id="move_2">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</body>
+</html>

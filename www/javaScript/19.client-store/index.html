@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>cookie</title>
+		<script type="text/javascript" src="cookie.js"></script>
+	</head>
+	<body>
+		<div id="d">ddd</div>
+		<button id="btn">sdd</button>
+		<script type="text/javascript">
+        	document.cookie = "name1=value1";
+        	document.cookie = "name2=" + encodeURIComponent("值;"); //encodeURI
+        	document.cookie = "name3=value3";
+        	
+        	/*方案一：直接截取字符串
+        	function getCookie(cookieName){
+        		var start = document.cookie.indexOf(cookieName+"="); // "=":避免name,value重名
+        		if(start == -1){return ""}
+        		start = start+cookieName.length+1;					 // 得到value的位置
+        		var end = document.cookie.indexOf(";",start);		 // start：规定在字符串中开始检索的位置
+        		if(-1 == end){end = document.cookie.length};
+        		return decodeURIComponent(document.cookie.substring(start,end));
+        	};*/
+        	
+        	/*方案二：将Cookie拆分为数组，通过遍历取得
+        	function getCookie(cookieName){
+        		var cookies = document.cookie.split("; ");
+        		for(var i=0,cookie;i<cookies.length;i++){
+        			cookie = cookies[i].split("=");
+        			if(cookie[0] == cookieName) return decodeURIComponent(cookie[1]); 
+        		}
+        		return "";
+        	};
+        	*/
+        	
+        	//方案三：正则表达式
+        	function getCookie(cookieName){
+        		var re = new RegExp("\\b"+cookieName+"=([^;]*)\\b");	// \b:单词边界
+				var arr =  re.exec(document.cookie);
+				return arr ? decodeURIComponent(arr[1]) : "";
+        	};
+        	//alert(getCookie("name2"));
+        	
+        	
+        	function setCookie(c_name,value,expiredays){
+				var exdate=new Date()
+				exdate.setDate(exdate.getDate()+expiredays)
+				document.cookie=c_name+ "=" +escape(value)+
+				((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+			}
+        	
+        	// 实例   设置文本的颜色,在cookie里保存
+    		var  dd = document.getElementById("d");
+    		var color = "red";
+			function s(){
+	    		dd.style.color = color;
+	    		setCookie("b",color,1)
+			}
+			document.getElementById("btn").onclick = function(){s()};
+			
+			window.onload = function(){
+				dd.style.color = getCookie("b");
+			}
+	
+        </script>
+        
+
+       
+	</body>
+</html>

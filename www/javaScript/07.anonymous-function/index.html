@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>oop</title>
+		<script type="text/javascript" src="closure.js"> </script>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+			
+			//闭包与匿名函数
+           function createComparisonFunction(propertyName){
+				//返回一个匿名函数
+				return function(object1,object2){ 
+					var value1 = object1[propertyName];
+					var value2 = object2[propertyName];
+					if(value1 < value2){
+						return -1;
+					}else if(value1 > value2){
+						return 1;
+					}else{
+						return 0;
+					}
+				};
+			};
+			var data = [{name:"Zachary",age:28},{name:"Nicholas",age:29}];//创建包含两个对象的数组
+			data.sort(createComparisonFunction("name"));
+			//alert(data[0].name); // Nicholas
+			data.sort(createComparisonFunction("age"));
+			//alert(data[0].name); // Zachary
+			
+			
+			// 阶乘
+			function add(n){	//面向过程
+				for(var i=ret=1;i<=n;i++){
+					ret=ret*i;
+				};
+				alert(arguments.callee.caller);	// caller属性指向调用当前函数的那个函数
+				return ret;
+			};
+			// function x(){alert(add(5))};x();	// 测试caller属性	
+			function fnAdd(n){	
+				//alert(args.callee);	// arguments对象补充:arguments对象的callee属性指向它所在的函数
+				//return n ? n*fnAdd(n-1) : 1;   //函数式
+				return n ? n*arguments.callee(n-1) : 1;  //递归
+			};	// alert(fnAdd(5));
+			
+			
+			/**
+			 * 闭包
+			 * 闭包是指有权访问另一个函数作用域中变量的函数
+			 * 由于闭包会携带包含它的函数的作用域，因此会比其它函数占用更多的内存
+			 * 闭包只能取得包含函数中任何变量的最后一个值
+			 */
+			//闭包与变量
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+        //]]>
+        </script>
+	</body>
+</html>

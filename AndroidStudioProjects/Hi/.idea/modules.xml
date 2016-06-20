@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Gson/Gson.iml" filepath="$PROJECT_DIR$/Gson/Gson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hi.iml" filepath="$PROJECT_DIR$/Hi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Http/Http.iml" filepath="$PROJECT_DIR$/Http/Http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Socket/Socket.iml" filepath="$PROJECT_DIR$/Socket/Socket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocketChatRoom/SocketChatRoom.iml" filepath="$PROJECT_DIR$/SocketChatRoom/SocketChatRoom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebViewDemo1/WebViewDemo1.iml" filepath="$PROJECT_DIR$/WebViewDemo1/WebViewDemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XMLParseDemo/XMLParseDemo.iml" filepath="$PROJECT_DIR$/XMLParseDemo/XMLParseDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/activity/activity.iml" filepath="$PROJECT_DIR$/activity/activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adapter/adapter.iml" filepath="$PROJECT_DIR$/adapter/adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidannotations/androidannotations.iml" filepath="$PROJECT_DIR$/androidannotations/androidannotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apiguide/apiguide.iml" filepath="$PROJECT_DIR$/apiguide/apiguide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/broadcast/broadcast.iml" filepath="$PROJECT_DIR$/broadcast/broadcast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contentprovider/contentprovider.iml" filepath="$PROJECT_DIR$/contentprovider/contentprovider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datafile/datafile.iml" filepath="$PROJECT_DIR$/datafile/datafile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/event/event.iml" filepath="$PROJECT_DIR$/event/event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragment/fragment.iml" filepath="$PROJECT_DIR$/fragment/fragment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gesturedetector/gesturedetector.iml" filepath="$PROJECT_DIR$/gesturedetector/gesturedetector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/handler/handler.iml" filepath="$PROJECT_DIR$/handler/handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intent/intent.iml" filepath="$PROJECT_DIR$/intent/intent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsonparsedemo/jsonparsedemo.iml" filepath="$PROJECT_DIR$/jsonparsedemo/jsonparsedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediaPlayerDemo/mediaPlayerDemo.iml" filepath="$PROJECT_DIR$/mediaPlayerDemo/mediaPlayerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/menu/menu.iml" filepath="$PROJECT_DIR$/menu/menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service2/service2.iml" filepath="$PROJECT_DIR$/service2/service2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sharedpreferences/sharedpreferences.iml" filepath="$PROJECT_DIR$/sharedpreferences/sharedpreferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sqlite/sqlite.iml" filepath="$PROJECT_DIR$/sqlite/sqlite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sysservice/sysservice.iml" filepath="$PROJECT_DIR$/sysservice/sysservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/touch/touch.iml" filepath="$PROJECT_DIR$/touch/touch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
+    </modules>
+  </component>
+</project>

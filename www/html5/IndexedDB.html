@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>IndexedDB</title>
+		<meta name="description" content="" />
+		<meta name="author" content="hewj" />
+	</head>
+	<body>
+		<script>
+			/**
+			 *  参考：http://bulaoge.net/topic.blg?dmn=g3g4&tid=2329796
+			 *  Demo：http://jinjiang.github.com/demos/indexed-db/firefox-10.html
+			 *  1.初始化数据库连接
+			 *	2.在数据库中建表
+			 *	3.在表中存取数据
+			 * 
+			 */
+			var req = window.IndexedDB.open(dbName, dbVersion);
+			req.onsuccess = function (e) {
+				
+			}
+			req.onupgradeneeded = function (e) {
+			
+			}
+			req.onerror = function (e) {
+
+			}
+			
+			// 在数据库中建表
+			req.onupgradeneeded = function (e) {
+			    var db = req.result;
+			    vardb.createObjectStore(storeName, optionParameters);
+			};
+			
+			// 在表中存取数据
+			req.onsuccess = function (e) {
+			    var db = req.result;
+			    var transaction = db.transaction(storeNames, mode);
+			    var store = transaction.objectStore(storeName);
+			    var subReq = store.add(value, key);
+			    // var subReq = store.get(key);
+			    // var subReq = store.delete(key);
+			    // var subReq = store.clear();
+			    subReq.onsuccess = function (e) {
+			        console.log(subReq.result);
+			    };
+			};
+			
+			
+			
+			
+			
+			
+			
+			
+			/// Indexed Database demo script ///
+
+
+			/// global ///
+			
+			if ('webkitIndexedDB' in window) {
+			    window.indexedDB = webkitIndexedDB;
+			    window.IDBKeyRange = webkitIDBKeyRange;
+			    window.IDBTransaction = window.webkitIDBTransaction;
+			}
+			else if ('mozIndexedDB' in window) {
+			    window.indexedDB = mozIndexedDB;
+			}
+			
+			
+			
+			
+			
+			var db;
+			var list = $('#list');
+			
+			function init() {
+			    //var req = window.mozIndexedDB.open('readinglist', '1.0');
+			    var req = window.IndexedDB.open('readinglist', '1.0');
+			    req.onsuccess = function (e) {
+			        db = this.result;
+			        showList();
+			    };
+			    req.onupgradeneeded = function (e) {
+			        db = this.result;
+			        db.createObjectStore('links', {keyPath: 'url'});
+			    };
+			}
+			
+			function add(title, url) {
+			    var link = {
+			        title: title,
+			        url: url
+			    }; // 创建要存储的对象
+			    var transaction = db.transaction('links', IDBTransaction.READ_WRITE);
+			    var store = transaction.objectStore('links');
+			    var req = store.put(link); // put的作用是key存在时做更新处理，不存在是做添加处理
+			    req.onsuccess = showList; // 添加成功后重新展示列表
+			}
+			
+			function remove(url) {
+			    var transaction = db.transaction('links', IDBTransaction.READ_WRITE);
+			    var store = transaction.objectStore('links');
+			    var req = store.delete(url); // 删除此链接
+			    req.onsuccess = showList; // 删除成功后重新展示列表
+			}
+			
+			function showList() {
+			    list.empty();
+			
+			    var transaction = db.transaction('links');
+			    var store = transaction.objectStore('links');
+			    var range = IDBKeyRange.lowerBound(0); // 创建关键字范围描述
+			    var req = store.openCursor(range); // 创建在上述范围内遍历的游标
+			    req.onsuccess = function (e) {
+			        var result = this.result;
+			        if (result) {
+			            var link = result.value;
+			            appendLink(link);
+			            result.continue();
+			        }
+			    };
+			}
+			
+			function appendLink(link) {
+			    var url = link.url;
+			    var title = link.title;
+			    var li = $('<li><a href="#" target="_blank"></a> <button>X</button></li>');
+			    li.find('a').attr('title', title).attr('href', url).text(title);
+			    li.find('button').click(function (e) {
+			        remove(url);
+			    });
+			    list.append(li);
+			}
+			
+			function clickAddBtn(e) {
+			    var title = prompt('please input the title') || '[No title]';
+			    var url = prompt('please input the url', 'http://');
+			    if (title && url) {
+			        add(title, url);
+			    }
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

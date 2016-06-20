@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react</title>
+	<script type="text/javascript" src="./dist/react.js"></script>
+	<script type="text/javascript" src="./dist/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+    <script type="text/jsx">
+		var FormApp = React.createClass({
+
+			getInitialState: function() {
+				return {
+					inputValue: 'inputValue',
+					selectValue: 'C',
+					radioValue: 'C',
+					checkboxValue: 'A',
+					textareaValue: 'some text here ...'
+				}
+			},
+			handelInput: function(e) {
+				this.setState({
+					inputValue: e.target.value
+				})
+			},
+			handelSelect: function(e) {
+				this.setState({
+					selectValue: e.target.selectValue
+				})
+			},
+			handleSubmit: function(e) {
+				e.preventDefault();
+				console.log('from submitting ..');
+				console.log(e);
+			},
+
+			render: function(){
+				return (
+					<form onSubmit={this.handleSubmit}>
+						<input type='text' defaultValue='defaultValue' value={this.state.inputValue} onChange={this.handelInput} /> {/*不监听onChange事件将无法inputValue*/}
+						<br/>
+						<select defaultValue='B' value={this.state.selectValue} onChange={this.handelSelect}>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
+						</select>
+						<br/>
+						<p>redio button</p>
+						<input name='goodRadio' type='radio' value='A' />
+						<input name='goodRadio' type='radio' value='B' defaultChecked />
+						<input name='goodRadio' type='radio' value='C' defaultChecked={this.state.radioValue}/>
+						<br/>
+						<input name='checkbox' type='checkbox' value='A' defaultChecked={this.state.checkboxValue}/>
+						<input name='checkbox' type='checkbox' value='B' defaultChecked />
+						<input name='checkbox' type='checkbox' value='C' />
+						<br/>
+						<textarea cols="50" rows="10" defaultValue='defaultValue: some text heer again ..' value={this.state.textareaValue}></textarea>
+						<br/>
+						<button type='submit'>submit</button>
+					</form>
+				)
+			}
+
+		});
+
+		React.render(<FormApp/>, document.getElementById('app'));
+
+    </script>
+</body>
+</html>

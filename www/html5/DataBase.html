@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>chrome database or web sql</title>
+		<meta name="description" content="" />
+		<meta name="author" content="hewj" />
+	</head>
+	<body>
+		<script>
+			var db = window.openDatabase("mydata", "1.0","数据库描述",20000);
+			//window.openDatabase("数据库名字", "版本","数据库描述",数据库大小);
+			if(db){
+			     console.log("创建数据库成功！");
+			} 
+			 
+			//本地数据库是通过db.transaction()函数来实现的
+			db.transaction(function(tx) {
+				tx.executeSql("CREATE TABLE tabl (id int UNIQUE, mytitle TEXT, timestamp REAL)");
+			});
+			
+			//插入记录
+			db.transaction(function(tx) {
+				tx.executeSql("INSERT INTO tabl (mytitle, timestamp) values(?, ?)", ["WEB Database", new Date().getTime()], null, null);
+			});
+			
+			//更新记录：
+			db.transaction(function(tx) {
+				tx.executeSql("update tabl set mytitle=? where mytitle = 'fsafdsaf'",['xp'],null,null);
+			});
+						
+			//查询记录：
+			db.transaction(function(tx) {
+				tx.executeSql("SELECT * FROM test", [],  
+				 	 function(tx, result) {
+				  		 for(var i = 0; i < result.rows.length; i++){ 
+				   		 document.write('<b>' + result.rows.item(i)['mytitle'] + '</b><br />'); 
+				 	 } 
+				}, function(){
+				  	console.log("error");
+				}); 
+			});
+			
+			//删除表：
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE test");
+			})
+			
+			
+			//自定义的数据库操作类  ======================================================
+			var Cls_websql = function(db_name,config){  
+				//初始化变量  
+		   		var cf= config?config:{},  
+		        cfg = {  
+		            version: cf.version?cf.version:'1.0',desc: cf.desc?cf.desc:'数据库'+db_name,size: cf.size?cf.size:10*1024  
+		        },  
+		   
+		        log= function(msg, cat, src){  
+		            if (window['console'] !== undefined && console.log) {  
+		                console[cat && console[cat] ? cat : 'log'](msg);  
+		            }  
+		        },  
+				          
+				//还不成熟，sql中不能包含"?",例"select user where title like 'tb?'"  
+		        formatSql= function(sql,data){  
+		            var count=0;  
+		            return sql.replace(/(\?)/g, function(a,b){  
+		                return data[count++];  
+		            });  
+		        },  
+				          
+				//初始化数据库  
+		        db= function(){  
+		            if(window['openDatabase'] !== undefined){  
+		                log("数据库连接成功");  
+		                return openDatabase(db_name, cfg.version , cfg.desc , cfg.size);  
+		            }else{  
+		                log("数据库连接失败");  
+		                return null;  
+		            }  
+		        }();  
+		   
+			    this.db= db;  
+			   
+				//执行sql操作  
+			    this.execSql= function(sql,data,success,failure){  
+			        if(!db){  
+			            log("请先初始化数据库和表。");  
+			            return;  
+			        }  
+			        if(!data){  
+			            data= [];  
+			        }  
+			        if (success === undefined){  
+			            success = function(tx, results){  
+			                log("操作成功:"+formatSql(sql,data));  
+			            }  
+			        }  
+			        var errfun= toString.call(failure) === '[object Function]'?  
+			                    function(tx, err){  
+			                        failure.call(this,tx,err,formatSql(sql,data));  
+			                    } :  
+			                    function(tx, err){  
+			                        log("操作失败! msg:"+err.message+" sql:"+formatSql(sql,data));  
+			                    };  
+			        db.transaction(function(tx){  
+			            try{  
+			                tx.executeSql(sql,data,success,errfun)  
+			            }catch(e){  
+			                log("数据库执行失败:"+e.message);  
+			            }  
+			        });  
+			    };  
+			   
+			};  
+			
+			
+			
+			//chrome database
+			/*
+			document.write("========================chrome database=======================");
+			function prepareDatabase(ready, error) {
+			return openDatabase('documents', '1.0', 'Offline document storage', 5*1024*1024, function (db) {
+			    db.changeVersion('', '1.0', function (t) {
+			      t.executeSql('CREATE TABLE docids (id, name)');
+			    }, error);
+			  });
+			}
+			
+			function showDocCount(db, span) {
+			  db.readTransaction(function (t) {
+			    t.executeSql('SELECT COUNT(*) AS c FROM docids', [], function (t, r) {
+			      span.textContent = r.rows[0].c;
+			    }, function (t, e) {
+			      // couldn't read database
+			      span.textContent = '(unknown: ' + e.message + ')';
+			    });
+			  });
+			}
+			
+			prepareDatabase(function(db) {
+			  // got database
+			  var span = document.getElementById('doc-count');
+			  showDocCount(db, span);
+			}, function (e) {
+			  // error getting database
+			  alert(e.message);
+			});
+			
+			db.readTransaction(function (t) {
+			  t.executeSql('SELECT title, author FROM docs WHERE id=?', [id], function (t, data) {
+			    report(data.rows[0].title, data.rows[0].author);
+			  });
+			});
+			
+			function findDocs(db, resultCallback) {
+			  var q = "";
+			  for each (var i in labels)
+			    q += (q == "" ? "" : ", ") + "?";
+			  db.readTransaction(function (t) {
+			    t.executeSql('SELECT id FROM docs WHERE label IN (' + q + ')', labels, function (t, data) {
+			      resultCallback(data);
+			    });
+			  });
+			}
+			*/
+			
+			
+			
+		</script>
+	</body>
+</html>

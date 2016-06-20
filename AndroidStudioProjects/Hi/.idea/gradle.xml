@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.10" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Gson" />
+            <option value="$PROJECT_DIR$/Http" />
+            <option value="$PROJECT_DIR$/Socket" />
+            <option value="$PROJECT_DIR$/SocketChatRoom" />
+            <option value="$PROJECT_DIR$/WebViewDemo1" />
+            <option value="$PROJECT_DIR$/XMLParseDemo" />
+            <option value="$PROJECT_DIR$/activity" />
+            <option value="$PROJECT_DIR$/adapter" />
+            <option value="$PROJECT_DIR$/androidannotations" />
+            <option value="$PROJECT_DIR$/apiguide" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/broadcast" />
+            <option value="$PROJECT_DIR$/contentprovider" />
+            <option value="$PROJECT_DIR$/datafile" />
+            <option value="$PROJECT_DIR$/event" />
+            <option value="$PROJECT_DIR$/fragment" />
+            <option value="$PROJECT_DIR$/gesturedetector" />
+            <option value="$PROJECT_DIR$/handler" />
+            <option value="$PROJECT_DIR$/intent" />
+            <option value="$PROJECT_DIR$/jsonparsedemo" />
+            <option value="$PROJECT_DIR$/mediaPlayerDemo" />
+            <option value="$PROJECT_DIR$/menu" />
+            <option value="$PROJECT_DIR$/service" />
+            <option value="$PROJECT_DIR$/service2" />
+            <option value="$PROJECT_DIR$/sharedpreferences" />
+            <option value="$PROJECT_DIR$/sqlite" />
+            <option value="$PROJECT_DIR$/sysservice" />
+            <option value="$PROJECT_DIR$/touch" />
+            <option value="$PROJECT_DIR$/ui" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Gson" />
+            <option value="$PROJECT_DIR$/Http" />
+            <option value="$PROJECT_DIR$/Socket" />
+            <option value="$PROJECT_DIR$/SocketChatRoom" />
+            <option value="$PROJECT_DIR$/WebViewDemo1" />
+            <option value="$PROJECT_DIR$/XMLParseDemo" />
+            <option value="$PROJECT_DIR$/activity" />
+            <option value="$PROJECT_DIR$/adapter" />
+            <option value="$PROJECT_DIR$/androidannotations" />
+            <option value="$PROJECT_DIR$/apiguide" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/broadcast" />
+            <option value="$PROJECT_DIR$/contentprovider" />
+            <option value="$PROJECT_DIR$/datafile" />
+            <option value="$PROJECT_DIR$/event" />
+            <option value="$PROJECT_DIR$/fragment" />
+            <option value="$PROJECT_DIR$/gesturedetector" />
+            <option value="$PROJECT_DIR$/handler" />
+            <option value="$PROJECT_DIR$/intent" />
+            <option value="$PROJECT_DIR$/jsonparsedemo" />
+            <option value="$PROJECT_DIR$/mediaPlayerDemo" />
+            <option value="$PROJECT_DIR$/menu" />
+            <option value="$PROJECT_DIR$/service" />
+            <option value="$PROJECT_DIR$/service2" />
+            <option value="$PROJECT_DIR$/sharedpreferences" />
+            <option value="$PROJECT_DIR$/sqlite" />
+            <option value="$PROJECT_DIR$/sysservice" />
+            <option value="$PROJECT_DIR$/touch" />
+            <option value="$PROJECT_DIR$/ui" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

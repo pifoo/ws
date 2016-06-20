@@ -1,0 +1,12 @@
+dependencies: \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/ios/noder/AppDelegate.m \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/ios/noder/AppDelegate.h \
+  ../node_modules/react-native/React/Base/RCTRootView.h \
+  ../node_modules/react-native/React/Base/RCTBridge.h \
+  ../node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  ../node_modules/react-native/React/Base/RCTBridgeModule.h \
+  ../node_modules/react-native/React/Base/RCTDefines.h \
+  ../node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  ../node_modules/react-native/React/Base/RCTInvalidating.h \
+  ../node_modules/react-native/React/Base/RCTJavaScriptExecutor.h \
+  ../node_modules/react-native-code-push/ios/CodePush/CodePush.h

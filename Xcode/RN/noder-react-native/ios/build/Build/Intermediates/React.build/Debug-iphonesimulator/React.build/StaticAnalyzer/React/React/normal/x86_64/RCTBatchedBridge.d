@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBatchedBridge.m \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTJavaScriptExecutor.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTBridgeMethod.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Layout/Layout.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTDisplayLink.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Executors/RCTJSCExecutor.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTModuleData.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Modules/RCTSourceCode.h \
+  /Users/pifoo/workspaces/Xcode/RN/noder-react-native/node_modules/react-native/React/Base/RCTUtils.h

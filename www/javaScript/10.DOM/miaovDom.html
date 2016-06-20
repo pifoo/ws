@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>templates</title>
+		<meta name="description" content="" />
+		<meta name="author" content="hewj" />
+	</head>
+	<body>
+		<!--
+			http://www.cnblogs.com/webabcd/archive/2012/02/02/2335318.html
+	     accesskey - 用于定义快捷键。快捷键为：alt + accesskey，参考第一个示例
+	          第二个示例描述为：有全键盘的设备快捷键为：ctrl + alt + q（目前 IE 为：ctrl + shift + q），仅有小键盘的设备快捷键为：“数字 0 键”
+	    -->
+	    <a accesskey="w" href="http://webabcd.cnblogs.com/">webabcd blog</a>
+	    <a accesskey="q 0" href="http://webabcd.cnblogs.com/">webabcd blog</a>
+	        <!--
+        bdo - 定义文本排列的方向（bdo 是 bi-directional override 的缩写）
+          dir - 文本排列方向，可能的值有：auto|ltr|rtl（dir 是 direction 的缩写）
+    -->
+    	<bdo dir="rtl">123</bdo></br>
+		<input id="ipt" type="text" accesskey="s" autofocus="true" autocomplete="off" x-webkit-speech="" spellcheck="true"
+		x-webkit-grammar="builtin:translate">
+		<ul id="ul1">
+			<li>dafafa<a href="javascript:;">隐藏</a></li>
+			<li>dafafa<a href="javascript:;">隐藏</a></li>
+			<li>dafafa<a href="javascript:;">隐藏</a></li>
+			<li>dafafa<a href="javascript:;">隐藏</a></li>
+		</ul>
+		
+		<input type="button" value="创建dt" id='add' />
+		<ul id="ul2">
+			
+		</ul>
+		<script>
+			/*
+			  创建DOM元素：createElement,appendChild
+			  插入DOM元素：insertBefore
+			 删除、替换DOM元素：removeChild,replaceChild
+			 
+			 ul_list.appendChild(ul_list.firstChild);//把第一条数据追加到最后
+
+			 */
+			window.onload = function(){
+				//	1
+				var oUl = document.getElementById('ul1');
+				var oA = oUl.getElementsByTagName('a');
+				//console.log(oUl.parentNode.tagName)
+				var i = 0;
+				for(i=0;i<oA.length;i++){
+					/*
+					oA[i].onclick = function(){
+						//父节点
+						this.parentNode.style.display = 'none';
+					}*/
+					//子节点
+					oUl.children[i].style.background = '#EEE';
+				}
+				
+				//	2
+				var oUl2 = document.getElementById('ul2');
+				var oIpt = document.getElementById('ipt');
+				var oLi = oUl2.getElementsByTagName('li');
+				var oBtn = document.getElementById('add');
+				oBtn.onclick = function() {
+					var aLi = document.createElement('li');
+					aLi.innerHTML = oIpt.value ;
+					if (oLi.length > 0) {
+						oUl2.insertBefore(aLi,oLi[0]);
+					} else{
+						oUl2.appendChild(aLi);
+					};
+					
+				}
+				
+				//	3
+				var oUl=document.getElementById('ul2');
+				var oLi=null;
+				var oFrag=document.createDocumentFragment();//文档碎片
+				var i=0;
+				for(i=0;i<100;i++){
+					oLi=document.createElement('li');
+					//oUl.appendChild(oLi);
+					oFrag.appendChild(oLi);
+				}
+					oUl.appendChild(oFrag);
+				}
+
+		</script>
+	</body>
+</html>

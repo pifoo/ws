@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>bom</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+        //<![CDATA[
+        
+        /*
+         * 8.1.2 窗口关系及框架
+         */
+        //top对象始终指向最高（最外）层框架，即浏览器窗口
+        //parent对象始终指向当前框架的直接上层框架
+		    //self对象，它始终指向window
+		    //以上这些对象都是window对象的属性,可以通过window.xx的形式来访问
+		
+		/*
+		 * 8.1.3 窗口位置
+		 */
+        //跨浏览器取得窗口相对于屏幕左边和上边的位置
+        // screenLeft/screenTop => IE,Safari,Opera,chrome
+        // screenX/screenY => Firefox
+        // Opera也支持screenX/screenY，但与screenLeft/screenTop属性并不对应，因此不建议在Operas使用creenX/screenY
+        var leftPos = (typeof window.screenLeft == 'number') ? window.screenLeft : window.screenX;
+        var topPos = (typeof window.screenTop == 'number') ? window.screenTop : window.screenY;
+        console.log('screenX:' + leftPos + '; screenY:' + topPos);
+        
+        //以下两个方法适用于最外层的window对象，不适用于框架，这两个方法有可能会被浏览器禁用
+        //将窗口移动到屏幕左上角
+        window.moveTo(0,0);//新位置的坐标值
+        //将窗口下移动100像素
+        window.moveBy(0,100); //在水平和垂直方向移动的像素数
+        
+        /*
+         * 8.1.4 窗口大小（视窗viewport大小）
+         */
+        //innerWidth,innerHeight 表示该容器中页面视图区的大小（减去边框宽度）
+        //outerWidth,outerHeight 返回浏览器窗口本身的尺寸（无论是最外层的window对象还是某个框架）
+        //在Opera中，这两个属性的值表示页面视图容器的大小，即单个标签页对应的浏览器窗口 
+        //在Chrome中，innerWidth,innerHeight，outerWidth,outerHeight返回相同的值，即视口(viewport)大小而非浏览器窗口大小 
+        //最终无法确定浏览器窗口本身大小，但却可以取得viewport视口的大小 
+        var pageWidth = window.innerWidth,
+        	pageHeight = window.innerHeight;
+        if(typeof pageWidth != 'number'){
+        	if (document.compatMode == 'CSS1Compat') {//IE6中标准模式下才有效
+        		pageWidth = document.documentElement.clientWidth;
+        		pageHeight = document.documentElement.clientHeight;
+        	} else{
+        		pageWidth = document.body.clientWidth;
+        		pageHeight = document.body.clientHeight;
+        	};
+        }
+        console.log('pageWidth:' + pageWidth + '; pageHeight:' + pageHeight);
+        
+        //调整浏览器窗口大小,有可能被禁用
+        window.resizeTo(300,400);//新的宽，高
+        //resizeBy(+x,+y);//新窗口与原窗口宽，高之差
+        
+         /*
+          * 8.1.5 导航和打开窗口 windown.open();
+          */
+        
+        /*
+         * 8.1.6 间歇调用和超时调用 
+         */
+        var timeoutId = setTimeout(function(){//第一个参数可以是像在eval()函数中使用的字符串一样，也可以是一个函数
+        	console.log('setTimeout');
+        },1000)//该方法会返回一个ID，表示超时调用 ，可用来取消超时调用
+        clearTimeout(timeoutId);
+        //setInterval();
+        
+        /*
+         * 8.1.7 系统对话框
+         */
+        //alert('msg');
+        //confirm('提示？');//返回ture,false
+        //prompt('提示？','默认值');//返回输入的值
+       	//window.print();
+       	//window.find();
+       	
+       	/*
+       	 * 8.2 location对象
+       	 */
+       	console.log(window.location);
+       	
+       	/*
+       	 * 8.3 navigator对象
+       	 */
+       	//console.log(navigator.userAgent); // 取得浏览器相关信息
+       	console.log(navigator);
+       	
+       	/*
+       	 * 8.3.1 检测插件
+       	 */
+       	console.log(navigator.plugins);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //]]>
+        </script>
+	</body>
+</html>
