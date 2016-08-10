@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>list</title>
+	<style type="text/css">
+		body,*{
+			font-size: 14px;
+			font-weight: 100%;
+			line-height: 20px;
+			font-family: Lato, 'Source Sans Pro', sans-serif, 'Helvetica Neue', Arial, "Segoe UI", Helvetica ;
+
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+		.completed{
+			text-decoration: line-through;
+			color: green;
+		}
+		.something{
+			color: green;
+		}
+		strong{
+			margin-left: 10px;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<task-app :listdata='tasks'>
+		</task-app>
+
+	<!-- 	<task-app :listdata="[{body: 'learn opp', completed: true}]">
+		</task-app>
+
+		<task-app :listdata="tasks">
+		</task-app> -->
+
+		<template id="task-template">
+			<h1 v-show='remaining'>
+				My tasks ({{ remaining }} / {{ listdata.length }} ).
+			</h1>
+			<ul>
+				<!-- <li v-for='task in tasks' :class="[completed, task.completed ? 'completed' : ''] "> -->
+				<li
+					v-for='task in listdata'
+					:class='{completed : task.completed}'
+					@click='toggleTasks(task)'
+					>
+					{{ task.body }}
+					<strong @click="deleteTask(task)">x</strong>
+				</li>
+			</ul>
+			<pre> {{ listdata|json }} </pre>
+		</template>
+
+	</div>
+	<script type="text/javascript">
+		Vue.component('task-app', {
+			template: '#task-template',
+			props: ['listdata'],
+			methods: {
+				toggleTasks: function(task){
+					task.completed = ! task.completed;
+				},
+				deleteTask: function(task){
+					this.listdata.$remove(task);
+				}
+			},
+			computed: {
+				remaining: function(){
+					return this.listdata.filter(function(task){
+						return ! task.completed;
+					}).length;
+				}
+			}
+		});
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				completed: 'something',
+				tasks: [
+					{body: 'go to the movie', completed: false},
+					{body: 'learn vue js in action', completed: true},
+					{body: 'go to the shop', completed: false}
+				]
+			}
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 20px;
+			font-weight: 100;
+			font-family:  'Lato', sans-serif, 'Source Sans Pro', 'Helvetica Neue', Arial ;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>列表循环</h1>
+
+	<h2>v-for</h2>
+	<ol id="example-1">
+		<li v-for="item in items">
+			{{ parentMessage }} - {{ $index }} - {{ item.message }} </br> 
+		</li>
+		<li v-for="value in object">
+			{{ $key }} : {{ value }}
+		</li>
+		<li v-for="(key, val) in object"> <!-- 对象别名 -->
+		    {{ key }} : {{ val }}
+		</li>
+		<li v-for="n in 10">{{ n }} </li> <!-- 值域 -->
+	</ol>
+	<script>
+		var example1 = new Vue({
+			el: '#example-1',
+			data: {
+				parentMessage: 'Parent',
+				items: [
+					{ message: 'Foo' },
+					{ message: 'Bar' }
+				],
+				object: {
+					FirstName: 'John',
+					LastName: 'Doe',
+					Age: 30
+			    }
+			}
+		})
+	</script>
+
+	<h2>template v-for</h2>	
+	<ul id="example-1">
+		<template v-for="item in items">
+			<li>{{ item.msg }}</li>
+			<li class="divider"></li>
+		</template>
+	</ul>
+	
+
+	<h1>数组变动检测</h1>
+	<!-- 
+		push()
+		pop()
+		shift()
+		unshift()
+		splice()
+		sort()
+		reverse() 
+	-->
+	
+
+
+</body>
+</html>

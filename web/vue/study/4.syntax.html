@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>syntax</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1></h1>
+
+	<h2>插值 文本、html</h2>
+	<div id="app1">
+		<span>Message: {{message}} </span>	</br> 			<!-- 双 Mustache 标签将数据解析为纯文本 -->
+		<span>This will never change: {{* message }}</span> <!-- 单次插值，此后的数据变化不会再引起插值更新 -->
+		<div>{{ raw_html }} {{{ raw_html }}}</div>			<!-- 三 Mustache 标签 输出 html 片断 -->
+		<div id="item-{{ id }}"></div>						<!-- HTML 特性 -->
+	</div>
+	<script>
+		var vm1 = new Vue({
+			el: "#app1",
+			data: {
+				message: "Hello Vue.js!",
+				raw_html: "<ul><li>html片断</li></ul>"
+			}
+		})
+	</script>
+
+
+	<h2>绑定表达式</h2>
+	<div id="app2">
+		<!-- JavaScript 表达式 -->
+		{{ number + 1 }}
+		{{ ok ? 'YES' : 'NO' }}
+		{{ message.split('').reverse().join('') }}
+
+		<!-- 过滤器 -->
+		<!-- Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管道符”指示： -->
+		{{ message | capitalize }}
+	</div>
+	<script>
+		var vm2 = new Vue({
+			el: "#app2",
+			data: {
+				number : 1,
+				message: "abc"
+			}
+		})
+	</script>
+
+
+	<h2>指令  参数 修饰符</h2>
+	<!-- 指令 (Directives) 是特殊的带有前缀 v- 的特性。指令的值限定为绑定表达式 -->
+	<div id="app3">
+		<p v-if="greeting">Hello!</p> 	<!-- v-if 指令将根据表达式 greeting 值的真假 删除/插入 <p> 元素 -->
+		<!-- 参数 -->
+		<a v-bind:href="url"></a>		<!-- 带参数 href: 中间放一个冒号隔开。例如，v-bind 指令用于响应地更新 HTML 特性 -->
+		<a v-on:click="doSomething">	<!-- v-on 指令，它用于监听 DOM 事件 -->
+		<!-- 修饰符 (Modifiers) 是以半角句号 . 开始的特殊后缀，用于表示指令应当以特殊方式绑定 -->
+		<a v-bind:href.literal="/a/b/c"></a> <!-- .literal 修饰符告诉指令将它的值解析为一个字面字符串而不是一个表达式 -->
+	</div>
+	<script>
+		var vm3 = new Vue({
+			el: "#app3",
+			data: {
+				greeting : true
+			}
+		})
+	</script>
+
+	
+	<h2>缩写</h2>
+	<div id="app4">
+
+		<!-- v-bind 缩写 -->
+
+		<!-- 完整语法 -->
+		<a v-bind:href="url"></a>
+		<!-- 缩写 -->
+		<a :href="url"></a>
+
+		<!-- 完整语法 -->
+		<button v-bind:disabled="someDynamicCondition">Button</button>
+		<!-- 缩写 -->
+		<button :disabled="someDynamicCondition">Button</button>
+		
+
+		<!-- v-on 缩写 -->
+
+		<!-- 完整语法 -->
+		<a v-on:click="doSomething"></a>
+
+		<!-- 缩写 -->
+		<a @click="doSomething"></a>
+
+	</div>
+	<script>
+		
+	</script>
+
+
+</body>
+</html>

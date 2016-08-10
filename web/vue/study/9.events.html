@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>方法与事件处理器</h1>
+
+	<h2>方法处理器</h2>
+	<div id="example">
+		<button v-on:click="greet">Greet</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example',
+			data: {
+				name: 'Vue.js'
+			},
+			// 在 `methods` 对象中定义方法
+			methods: {
+				greet: function (event) {
+				  	// 方法内 `this` 指向 vm
+				  	alert('Hello ' + this.name + '!')
+				  	// `event` 是原生 DOM 事件
+				  	alert(event.target.tagName)
+				}
+			}
+		})
+		// 也可以在 JavaScript 代码中调用方法
+		vm.greet() // -> 'Hello Vue.js!'
+	</script>
+	
+	<h2>内联语句处理器</h2>
+	<div id="example-2">
+		<button v-on:click="say('hi')">Say Hi</button>
+		<button v-on:click="say('what')">Say What</button>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+		  el: '#example-2',
+		  methods: {
+		    say: function (msg) {
+		      alert(msg)
+		    }
+		  }
+		})
+	</script>
+
+	<!-- 阻止单击事件冒泡 -->
+	<a v-on:click.stop="doThis"></a>
+
+	<!-- 提交事件不再重载页面 -->
+	<form v-on:submit.prevent="onSubmit"></form>
+
+	<!-- 修饰符可以串联 -->
+	<a v-on:click.stop.prevent="doThat">
+
+	<!-- 只有修饰符 -->
+	<form v-on:submit.prevent></form>
+
+</body>
+</html>

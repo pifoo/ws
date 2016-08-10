@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+		/* 必需 */
+		.expand-transition {
+		  transition: all .3s ease;
+		  height: 30px;
+		  padding: 10px;
+		  background-color: #eee;
+		  overflow: hidden;
+		}
+
+		/* .expand-enter 定义进入的开始状态 */
+		/* .expand-leave 定义离开的结束状态 */
+		.expand-enter, .expand-leave {
+		  height: 0;
+		  padding: 0 10px;
+		  opacity: 0;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>过渡</h1>
+	<div id="eg">
+		<p v-if="show" transition="expand">hello</p>	
+	</div>
+	<script>
+		Vue.config.debug = true;
+		Vue.config.silent = true;
+		new Vue({
+			el: '#eg',
+			data: {
+				show: true,
+				transitionName: 'fade'
+			}
+		})
+	</script>
+
+
+</body>
+</html>	

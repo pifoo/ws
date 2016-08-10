@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>表单控件绑定</h1>
+	<div id="eg1">
+		<!-- 双向绑定 -->
+		<span>Message is: {{ message }}</span></br>
+		<input type="text" v-model="message" placeholder="edit me">	
+		
+		<!-- Checkbox -->
+		<input type="checkbox" v-model="checked">
+		<label for="checkbox">{{ checked }}</label></br>
+
+		<!-- 多个勾选框，绑定到同一个数组： -->
+		<input type="checkbox" value="Jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" value="John" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" value="Mike" v-model="checkedNames">
+		<label for="mike">Mike</label>
+		<br>
+		<span>Checked names: {{ checkedNames | json }}</span></br>
+
+		<!-- Radio -->
+		<input type="radio" value="One" v-model="picked">
+		<label for="one">One</label>
+		<br>
+		<input type="radio" value="Two" v-model="picked">
+		<label for="two">Two</label>
+		<br>
+		<span>Picked: {{ picked }}</span>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#eg1",
+			data: {
+				message : "hello.",
+				checkedNames: []		// 多个勾选框，绑定到同一个数组
+			}
+		
+			
+		})
+	</script>
+
+</body>
+</html>

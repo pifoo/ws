@@ -16,11 +16,21 @@
 			} 
 			 
 			//本地数据库是通过db.transaction()函数来实现的
+			/**
+			 * [description]
+			 * @param  {[type]} tx) {				tx.executeSql("CREATE TABLE tabl (id int UNIQUE, mytitle TEXT, timestamp REAL)");			} [description]
+			 * @return {[type]}     [description]
+			 */
 			db.transaction(function(tx) {
 				tx.executeSql("CREATE TABLE tabl (id int UNIQUE, mytitle TEXT, timestamp REAL)");
 			});
 			
 			//插入记录
+			/**
+			 * [description]
+			 * @param  {[type]} tx) {				tx.executeSql("INSERT INTO tabl (mytitle, timestamp) values(?, ?)", ["WEB Database", new Date().getTime()], null, null);			} [description]
+			 * @return {[type]}     [description]
+			 */
 			db.transaction(function(tx) {
 				tx.executeSql("INSERT INTO tabl (mytitle, timestamp) values(?, ?)", ["WEB Database", new Date().getTime()], null, null);
 			});

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<!-- 如果需要多于一个表达式的逻辑，应当使用计算属性 -->
+
+	<!-- 基础示例 -->
+	<div id="app1">
+		a={{ a }}, b={{ b }}
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app1',
+			data: {
+				a: 1
+			},
+			computed: {
+				// 一个计算属性的 getter
+				b: function () {	// 声明了一个计算属性 b
+				  	// `this` 指向 vm 实例
+					return this.a + 1
+				}
+
+
+			}
+		})	
+		// 这里我们声明了一个计算属性 b。我们提供的函数将用作属性 vm.b的 getter。
+		console.log(vm.b) // -> 2
+		vm.a = 2
+		console.log(vm.b) // -> 3
+	</script>
+
+
+	<!-- 计算属性 vs. $watch -->
+	<div id="demo">
+		{{fullName}}
+	</div>
+	<script>
+		var vm1 = new Vue({
+			el: '#demo',
+			data: {
+			    firstName: 'Foo',
+			    lastName: 'Bar',
+			    fullName: 'Foo Bar'
+			},
+			methods: {
+
+			}
+		})
+		vm1.$watch('firstName', function (val) {
+		  	this.fullName = val + ' ' + this.lastName
+		})
+		vm1.$watch('lastName', function (val) {
+		  	this.fullName = this.firstName + ' ' + val
+		})
+
+		// 上面代码是命令式的重复的。跟计算属性对比, 更好：
+		var vm2 = new Vue({
+			data: {
+				firstName: 'Foo',
+				lastName: 'Bar'
+			},
+			computed: {
+				/*
+				fullName: function () {
+					return this.firstName + ' ' + this.lastName
+				}*/
+
+
+				// <!-- 计算 setter -->
+				// <!-- 计算属性默认只是 getter，不过在需要时你也可以提供一个 setter： -->
+				// 现在在调用 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会有相应更新
+				fullName: {
+				    // getter
+				    get: function () {
+				      	return this.firstName + ' ' + this.lastName
+				    },
+				    // setter
+				    set: function (newValue) {
+				      	var names = newValue.split(' ')
+				      	this.firstName = names[0]
+				      	this.lastName = names[names.length - 1]
+				    }
+			  	}
+			}
+		})
+	</script>
+
+
+
+
+
+</body>
+</html>

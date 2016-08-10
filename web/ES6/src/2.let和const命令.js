@@ -12,17 +12,16 @@
 /*
     1.1 基本用法
  */
-
 {
-    let a = 0;              // let声明的变量只在它所在的代码块有效
+    let a = 0; // let声明的变量只在它所在的代码块有效
     var b = 1;
-    console.log(++a);       // 1
+    console.log(++a); // 1
 }
 // a                         // ReferenceError: a is not defined
-console.log(b);              // 1
+console.log(b); // 1
 
 // for循环的计数器，就很合适使用let命令。
-for (let i = 0; i < 3; i++) {       // i 只在for循环体内有效
+for (let i = 0; i < 3; i++) { // i 只在for循环体内有效
     console.log("i - " + i);
 }
 // console.log(i);           // ReferenceError: i is not defined
@@ -31,7 +30,7 @@ for (let i = 0; i < 3; i++) {       // i 只在for循环体内有效
 var a = [];
 // i 全局范围内都有效。每一次循环，新的i值都会覆盖旧值，导致最后输出的是最后一轮的 i 的值
 for (var i = 0; i < 10; i++) {
-    a[i] = function () {
+    a[i] = function() {
         console.log(i);
     };
 }
@@ -42,7 +41,7 @@ a[6](); // 10
 var a = [];
 // 当前的 i 只在本轮循环有效，每一次循环的i其实都是一个新的变量
 for (let i = 0; i < 10; i++) {
-    a[i] = function () {
+    a[i] = function() {
         console.log(i);
     };
 }
@@ -74,7 +73,7 @@ if (true) {
 }
 
 // “暂时性死区”也意味着typeof不再是一个百分之百安全的操作
-console.log(typeof x)  // undefined
+console.log(typeof x) // undefined
 let x;
 
 // 参考x=y,此时y还没有声明，属于”死区“
@@ -85,18 +84,21 @@ function bar1(x = y, y = 2) {
 function bar2(x = 2, y = x) {
     return [x, y];
 }
-console.log(bar2())      // [2, 2]
+console.log(bar2()) // [2, 2]
+
+
 
 /*
     1.4 不允许重复声明
  */
 
 // let不允许在相同作用域内，重复声明同一个变量
-function a() {      // 报错 SyntaxError
+function a() { // 报错 SyntaxError
     let a = 10;
     //var a = 1;
 }
-function b() {      // 报错 TypeError
+
+function b() { // 报错 TypeError
     let a = 10;
     //let a = 1;
 }
@@ -105,10 +107,12 @@ function b() {      // 报错 TypeError
 function f1(arg) {
     //let arg;              // 报错
 }
+
+
 function f2(arg) {
-  {
-    let arg;                // 不报错
-  }
+    {
+        let arg; // 不报错
+    }
 }
 
 /*
@@ -119,20 +123,21 @@ function f2(arg) {
 
 // 第一种场景，内层变量可能会覆盖外层变量
 var date = new Date();
+
 function f() {
-    console.log(date);     // 变量提升，导致内层的date变量覆盖了外层的date变量
+    console.log(date); // 变量提升，导致内层的date变量覆盖了外层的date变量
     if (false) {
         var date = "hello world";
     }
 }
-f()                 // undefined
+f() // undefined
 
 // 第二种场景，用来计数的循环变量泄露为全局变量
 var s = 'hello';
 for (var j = 0; j < s.length; j++) {
     console.log(s[j]);
 }
-console.log(j);     // 5,   泄露成了全局变量
+console.log(j); // 5,   泄露成了全局变量
 
 /*
     ES6的块级作用域
@@ -149,7 +154,7 @@ function fu1() {
     if (true) {
         let n = 10;
     }
-    console.log(n);     // 5     let声明，外层代码块不受内部影响
+    console.log(n); // 5     let声明，外层代码块不受内部影响
 }
 fu1()
 
@@ -158,7 +163,7 @@ function fu2() {
     if (true) {
         var n = 10;
     }
-    console.log(n);     // 10    var声明
+    console.log(n); // 10    var声明
 }
 fu2()
 
@@ -193,8 +198,7 @@ fu2()
     {
         {
             {
-                let insane = 'Hello World 1'
-                {
+                let insane = 'Hello World 1' {
                     let insane = 'Hello World 2'
                     console.log(insane) // Hello World 2
                 }
@@ -207,14 +211,14 @@ fu2()
 // 块级作用域的出现，使得获得广泛应用的 立即执行匿名函数（IIFE）不再必要了
 
 // IIFE写法
-(function () {
+(function() {
     var tmp = 0;
     console.log(tmp);
-})();            // 匿名方法
-(function () {
+})(); // 匿名方法
+(function() {
     var tmp = 1;
     console.log(tmp);
-}())             // 表达式 ()
+}()) // 表达式 ()
 
 // 块级作用域写法
 {
@@ -235,7 +239,7 @@ function fout() {
             console.log('I am inside!');
         }
     }
-    fout();     // ES6；I am outside!
+    fout(); // ES6；I am outside!
 }())
 
 // 块级作用域外部，无法调用块级作用域内部定义的函数
@@ -249,11 +253,10 @@ function fout() {
 //fin();    // ReferenceError
 
 // 要想在外部调用，则先声明
-let func;
-{
+let func; {
     let a = 'secret';
 
-    func = function () {
+    func = function() {
         return a;
     }
 }
@@ -275,7 +278,7 @@ console.log(func());
 {
     'use strict';
     if (true) {
-      function fn2() {}
+        function fn2() {}
     }
 }
 //fn2();      // ReferenceError
@@ -325,12 +328,12 @@ let age = 25;
 const fno = {};
 fno.prop = 123;
 fno.prop
-// 123
-//fno = {}; // TypeError: "foo" is read-only
+    // 123
+    //fno = {}; // TypeError: "foo" is read-only
 
 const arr = [];
 arr.push("Hello"); // 可执行
-arr.length = 0;    // 可执行
+arr.length = 0; // 可执行
 //arr = ["Dave"];    // SyntaxError:  "arr" is read-only
 
 
@@ -345,9 +348,9 @@ const o = Object.freeze({});
 // 除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数。
 var constantize = (obj) => {
     Object.freeze(obj);
-    Object.keys(obj).forEach( (key, value) => {
-        if ( typeof obj[key] === 'object' ) {
-            constantize( obj[key] );
+    Object.keys(obj).forEach((key, value) => {
+        if (typeof obj[key] === 'object') {
+            constantize(obj[key]);
         }
     });
 };
@@ -358,17 +361,17 @@ var constantize = (obj) => {
 /*
  *  4. 全局对象的属性
  */
- //全局对象是最顶层的对象，在浏览器环境指的是window对象
- //在Node.js指的是global对象。ES5之中，全局对象的属性与全局变量是等价的
- // window.a = 1;
- // a // 1
- //
- // a = 2;
- // window.a // 2
+//全局对象是最顶层的对象，在浏览器环境指的是window对象
+//在Node.js指的是global对象。ES5之中，全局对象的属性与全局变量是等价的
+// window.a = 1;
+// a // 1
+//
+// a = 2;
+// window.a // 2
 
- // ES6为了改变这一点，一方面规定，为了保持兼容性，var命令和function命令声明的全局变量，依旧是全局对象的属性；
- // 另一方面规定，let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。
- // 也就是说，从ES6开始，全局变量将逐步与全局对象的属性脱钩
+// ES6为了改变这一点，一方面规定，为了保持兼容性，var命令和function命令声明的全局变量，依旧是全局对象的属性；
+// 另一方面规定，let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。
+// 也就是说，从ES6开始，全局变量将逐步与全局对象的属性脱钩
 
 //  var a = 1;
 // 如果在Node的REPL环境，可以写成global.a

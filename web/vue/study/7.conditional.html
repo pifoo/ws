@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<!-- Handlebars 模板 -->
+	<div id="app1">
+
+		{{#if ok}}
+		<h1>Yes</h1>
+		{{/if}}
+
+		<h1 v-if="ok">Yes</h1>
+		<h1 v-else>No</h1>
+
+		<template v-if="ok">
+		  <h1>Title</h1>
+		  <p>Paragraph 1</p>
+		  <p>Paragraph 2</p>
+		</template>
+		
+		<h1 v-show="ok">Hello!</h1>
+
+		<div v-if="Math.random() > 0.5">
+		  Sorry
+		</div>
+		<div v-else>
+		  Not sorry
+		</div>
+
+	</div>
+	<script>
+		var vm1 = new Vue({
+			el: '#app1',
+			data: {
+				ok: true
+			}
+		})
+	</script>
+
+	<div id="n">
+		<span v-for="n in 10">{{ n }} </span>
+	</div>
+	<script>
+		var vm = new Vue({	
+			el: "#n"		
+		})
+	</script>
+
+
+
+</body>
+</html>

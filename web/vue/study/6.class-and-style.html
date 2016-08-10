@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>绑定 HTML Class</h1>
+	<div id="html-class">
+		<!-- 对象语法 -->
+		<p class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }">绑定 HTML Class</p><!-- 渲染为：<div class="static class-a"></div> -->
+		<p v-bind:class="classObject">直接绑定数据里的一个对象</p> <!-- 直接绑定数据里的一个对象 -->
+
+		<!-- 数组语法 -->
+		<p v-bind:class="[classA, classB]">数组语法</p>
+
+		<p v-bind:class="[classA, isB ? classB : '']">三元表达式</p>
+	</div>	
+	<script>
+		var vm1 = new Vue({
+			el: '#html-class',
+			data: {
+				isA: true,
+				isB: false,
+				classA: 'class-a',
+  				classB: 'class-b',
+				classObject: {
+				    'class-a': true,
+				    'class-b': false
+		  		}
+			}
+		})
+	</script>
+
+
+	<h1>绑定内联样式</h1>
+	<div id="html-style">
+		<p v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">绑定内联样式</p>
+		<p v-bind:style="styleObject">绑定内联样式:直接绑定到一个样式对象</p>
+		<p v-bind:style="[styleObject, styleObjectB]">数组语法...</p>
+	</div>
+	<script>
+		var vm2 = new Vue({
+			el: '#html-style',
+			data: {
+				activeColor: 'blue',
+				fontSize: 14,
+				styleObject: {
+				    color: 'green',
+				    fontSize: '13px'
+				},
+				styleObjectB: {
+					padding: '10px'
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

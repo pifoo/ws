@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性</title>
+	<style type="text/css">
+		body,*{
+			font-size: 20px;
+			font-weight: 100;
+			font-family:  'Lato', sans-serif, 'Source Sans Pro', 'Helvetica Neue', Arial ;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		level {{ level }}
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				points: 200
+			},
+			computed: {
+				level: function(){
+					if (this.points <= 100) {
+						return '普通会员'
+					}
+					return 'VIP会员'
+				}
+			}
+		
+			
+		})
+	</script>
+
+</body>
+</html>

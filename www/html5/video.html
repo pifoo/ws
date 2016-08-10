@@ -20,11 +20,45 @@
 			http://www.w3schools.com/html5/mov_bbb.ogg
 			http://www.w3schools.com/html5/mov_bbb.webm
 		-->
-		<video width="640" height="264" autoplay="autoplay" controls="controls">
+		<video id="video" width="640" height="264" controls="controls">
 			<source src="resources/oceans-clip.mp4" type="video/mp4">
 			<source src="resources/oceans-clip.webm" type="video/ogg">
 			<img src="resources/oceans-clip.jpg" />
-		</video>
+		</video></br>
+		<button id="bt1" type="button">play</button>
+		<button id="bt2" type="button">pause</button></br>
+		<input type="button" id="time" onclick="reload()" />
+		<script type="text/javascript">
+			var bt1 = document.getElementById("bt1");
+			var bt2 = document.getElementById("bt2");
+			var player = document.getElementById("video");
+			player.preload = "auto";
+			player.autoplay = true;
+			player.loop = true;
+
+			bt1.addEventListener("click",function(){
+				player.play();
+			});
+			bt2.addEventListener("click",function(){
+				player.pause();
+			});
+
+			function onPageFinished(){
+				player.play();
+			}
+
+			function date2str(x,y) {
+    			var z ={y:x.getFullYear(),M:x.getMonth()+1,d:x.getDate(),h:x.getHours(),m:x.getMinutes(),s:x.getSeconds()};
+    		return y.replace(/(y+|M+|d+|h+|m+|s+)/g,function(v) {return ((v.length>1?"0":"")+eval('z.'+v.slice(-1))).slice(-(v.length>2?v.length:2))});
+			}
+			var t = document.getElementById("time");
+			//console.log(date2str(new Date(),"yy-M-d h:m:s"));
+			console.log(date2str(new Date(),"yyyy-MM-d h:m:s"));
+			t.value = date2str(new Date(),"yyyy-MM-d h:m:s");
+			function reload(){
+				location.reload();
+			}
+		</script>
 		
 	</body>
 </html>

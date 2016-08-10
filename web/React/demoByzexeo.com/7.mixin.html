@@ -19,6 +19,8 @@
 			previousState: function(){
 				var index = this.oldStates.length - 1;
 				return index == -1 ? {} : this.oldStates[index];
+			}componentWillReceiveProps(nextProps) {
+			    
 			}
 		};
 
@@ -27,7 +29,7 @@
 			getInitialState: function() {
 				return {
 					count: 0,
-				}
+				} 
 			},
 			doUpdate: function() {
 				this.setState({

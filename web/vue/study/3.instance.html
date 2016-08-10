@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overview</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+
+
+<script>
+	/**
+	 * 构造器
+	 */
+
+	// 1. 每个 Vue.js 应用的起步都是通过构造函数 Vue 创建一个 Vue 的根实例：
+	var vm1 = new Vue({		// 一个 Vue 实例其实正是一个 MVVM 模式中所描述的 ViewModel
+	  // 选项
+	})
+
+	// 2. 可以扩展 Vue 构造器，从而用预定义选项创建可复用的组件构造器：
+	// 所有的 Vue.js 组件其实都是被扩展的 Vue 实例
+	var MyComponent = Vue.extend({
+	  // 扩展选项
+	})
+	// 所有的 `MyComponent` 实例都将以预定义的扩展选项被创建
+	var myComponentInstance = new MyComponent()
+</script>
+
+<div id="example"></div>
+<script>
+	/**
+	 * 属性与方法
+	 */
+	
+	// 每个 Vue 实例都会代理其 data 对象里所有的属性：
+	var data = { a: 1 }
+	var vm2 = new Vue({
+		el: '#example',
+		data: data 			// 只有这些被代理的属性是响应的
+	})
+	console.log(vm2.a);
+	console.log(vm2.a === data.a);
+	vm2.a = 2
+	console.log(data.a); // -> 2
+
+	// Vue实例除了代理的属性、方法外, Vue 实例还暴露了一些有用的实例属性与方法, 以 $ 开始
+	console.log(vm2.$data === data) // -> true  	
+	console.log(vm2.$el === document.getElementById('example')) // -> true
+	// $watch 是一个实例方法
+	vm2.$watch('a', function (newVal, oldVal) {
+	  	// 这个回调将在 `vm2.a`  改变后调用
+	  	console.log('这个回调将在 `vm2.a`  改变后调用');
+	})
+</script>
+
+<script>
+	/**
+	 * 实例生命周期
+	 */
+	
+	// Vue 实例在创建时有一系列初始化步骤——例如，它需要建立 数据观察，编译模板，创建必要的 数据绑定
+	// 在此过程中，它也将调用一些生命周期钩子，给自定义逻辑提供运行机会。例如 created 钩子在实例创建后调用：
+	// (也有一些其它的钩子，在实例生命周期的不同阶段调用，如 compiled、 ready 、destroyed。钩子的 this 指向调用它的 Vue 实例。一些用户可能会问 Vue.js 是否有“控制器”的概念？答案是，没有。组件的自定义逻辑可以分割在这些钩子中)
+	var vm3 = new Vue({
+		data: {
+			a: 1
+		},
+		created: function () {
+			// `this` 指向 vm3 实例
+			console.log('a is: ' + this.a)
+		}
+	})
+	// -> "a is: 1"
+	
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

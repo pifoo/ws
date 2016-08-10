@@ -3,14 +3,11 @@ net = require('net');
 var sockets = [];
 var name_map = new Array();
 var chuck_quotes = [
-    "There used to be a street named after Chuck Norris, but it was changed because
-     nobody crosses Chuck Norris and lives.",
-    "Chuck Norris died 20 years ago, Death just hasn't built up the courage to tell
-     him yet.",
+    "There used to be a street named after Chuck Norris, but it was changed because nobody crosses Chuck Norris and lives.",
+    "Chuck Norris died 20 years ago, Death just hasn't built up the courage to tell him yet.", 
     "Chuck Norris has already been to Mars; that's why there are no signs of life.",
     "Some magicians can walk on water, Chuck Norris can swim through land.",
-    "Chuck Norris and Superman once fought each other on a bet. The loser had to start
-     wearing his underwear on the outside of his pants."
+    "Chuck Norris and Superman once fought each other on a bet. The loser had to start wearing his underwear on the outside of his pants."
 ]
 
 function get_username(socket) {

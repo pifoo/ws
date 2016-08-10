@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overview</title>
+	<style type="text/css">
+		body,*{
+			font-size: 16px;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+			color: #34495e;
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<h1>e.g: example-1. 响应的数据绑定系统</h1>			
+	<!-- 数据驱动视图:不需要撰写任何 DOM 操作代码：被绑定增强的 HTML 模板是底层数据状态的声明式的映射，数据不过是普通 JavaScript 对象 -->
+	<!-- View -->
+	<div id="example-1">
+	  Hello {{ name }}!
+	  	<script>
+			// Model
+			var exampleData = {
+				name: 'Vue.js'
+			}	
+			// 创建一个 Vue 实例或 "ViewModel"
+			// 它连接 View 与 Model
+			var exampleVM = new Vue({
+				el: '#example-1',
+				data: exampleData
+			})
+		</script>
+	</div>
+
+
+
+	<h1>e.g: example-2. 指令</h1>
+	<div id="example-2">
+  		<p v-if="greeting">Hello!</p>	<!-- 指令带有前缀 v- -->
+	  	<script>
+	  		var exampleVM2 = new Vue({
+				el: '#example-2',
+				data: {
+					greeting: true
+				}
+			})
+	  	</script>
+	</div>
+
+
+
+	<h1>e.g: example-3. 组件系统</h1>
+	<div id="example-3">
+<!--   		<div id="app">
+			<app-nav></app-nav>
+			<app-view>
+				<app-sidebar></app-sidebar>
+				<app-content></app-content>
+			</app-view>
+		</div>
+ -->
+	  	<script>
+	  		var exampleVM2 = new Vue({
+				el: '#example-3',
+				data: {
+					greeting: true
+				}
+			})
+	  	</script>
+	</div>
+
+	
+</body>
+</html>
